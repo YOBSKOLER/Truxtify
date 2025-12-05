@@ -1,0 +1,257 @@
+/* Responsive pour le carousel de catégories : 2 cards par slide sur mobile */
+/* --- Responsive design --- */
+@media (max-width: 992px) {
+  .hero {
+    height: 280px;
+  }
+  #heroCarousel .carousel-caption h1 {
+    font-size: 2rem;
+  }
+  #heroCarousel .carousel-caption p {
+    font-size: 1.1rem;
+  }
+}
+@media (max-width: 768px) {
+  .hero {
+    height: 180px;
+  }
+  #heroCarousel .carousel-caption h1 {
+    font-size: 1.2rem;
+  }
+  #heroCarousel .carousel-caption p {
+    font-size: 0.9rem;
+  }
+  .categories-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  .carousel-controls-inline {
+    justify-content: flex-start;
+  }
+  .carousel-controls-inline .carousel-control-prev,
+  .carousel-controls-inline .carousel-control-next {
+    width: 28px;
+    height: 28px;
+  }
+}
+@media (max-width: 576px) {
+  .hero {
+    height: 120px;
+  }
+  #heroCarousel .carousel-caption {
+    left: 2%;
+    right: 2%;
+    bottom: 10%;
+  }
+  .categories-header {
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 8px;
+  }
+}
+/* Aligner les titres du hero carousel à gauche */
+#heroCarousel .carousel-caption {
+  text-align: left;
+  left: 2%;
+  right: auto;
+  width: auto;
+}
+#heroCarousel .carousel-caption h1,
+#heroCarousel .carousel-caption p {
+  text-align: left;
+}
+/* Pour que le carousel couvre tout le hero */
+.hero {
+  position: relative;
+  width: 100%;
+  height: 400px;
+  overflow: hidden;
+  padding: 0;
+}
+/* Dégradé sur chaque slide, jamais sur le texte */
+#heroCarousel .carousel-item::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  pointer-events: none;
+  background: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0.6) 30%,
+    rgba(0, 0, 0, 0) 100%
+  );
+}
+#heroCarousel .carousel-inner,
+#heroCarousel .carousel-item,
+.hero-carousel-media {
+  position: relative;
+  z-index: 1;
+}
+#heroCarousel .carousel-caption,
+.swiper-caption {
+  position: absolute;
+  z-index: 3;
+}
+.hero-carousel-media {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+#heroCarousel,
+#heroCarousel .carousel-inner,
+#heroCarousel .carousel-item {
+  height: 100%;
+}
+#heroCarousel .carousel-caption {
+  bottom: 20%;
+}
+/* Contrôleurs du carousel sur la même ligne que le titre */
+.categories-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.swiper-button {
+  display: flex;
+  gap: 16px;
+}
+.swiper-button-prev,
+.swiper-button-next {
+  position: static;
+  top: auto;
+  bottom: auto;
+  left: auto;
+  right: auto;
+  transform: none;
+  margin: 0;
+  background: grey;
+  border-radius: 100%;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+.hero-content p {
+  font-size: 24px;
+  color: #e0e0e0;
+  text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.5);
+}
+
+.category-card {
+  border: 2px solid e9ecec;
+  transition: transform 0.3s;
+}
+.category-card:hover {
+  transform: none;
+  border-color: #100340;
+  box-shadow: 0 10 25px rgba(0, 0, 0, 0.15);
+}
+.footer {
+  background-color: #1e1e2f;
+  color: white;
+  padding: 40px 20px;
+}
+.footer a {
+  color: #10f9f1;
+  text-decoration: none;
+}
+.tab-btn {
+  flex: 1;
+  padding: 10px 0;
+  font-weight: bold;
+  border: none;
+  background: none;
+  transition: 0.3s ease;
+  border-bottom: 2px solid transparent;
+  cursor: pointer;
+}
+
+.tab-btn.active {
+  color: #0d6efd;
+  border-color: #0d6efd;
+}
+.form-slide {
+  transition: opacity 0.3s ease;
+}
+
+.form-slide.d-none {
+  opacity: 0;
+}
+
+input.form-control {
+  padding: 12px;
+  font-size: 14px;
+}
+
+.btn-warning,
+.btn-success {
+  padding: 10px;
+  font-weight: bold;
+}
+.wishlist-icon {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 1.5rem;
+  color: #bbb;
+  cursor: pointer;
+  transition: 0.3s;
+  z-index: 10;
+}
+.wishlist-icon.active {
+  color: red;
+}
+.product-card {
+  border: 1px solid #e0e0e0;
+  transition: transform 0.3s ease;
+}
+
+.product-card:hover {
+  transform: scale(1.02);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+}
+
+.card-title {
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.price {
+  color: #ffd700; /* Jaune doré */
+  font-weight: bold;
+}
+
+.btn-details {
+  border-color: #1e3a8a; /* Bleu roi */
+  color: #1e3a8a;
+}
+
+.btn-details:hover {
+  background-color: #1e3a8a;
+  color: white;
+}
+
+.btn-add-to-cart {
+  background-color: #228b22; /* Vert foncé */
+  color: white;
+  margin-top: 5px;
+    width: 100%;
+}
+.btn-add-to-cart:hover {
+  background-color: #1e7e1e;
+}
+.wishlist-icon {
+  cursor: pointer;
+}

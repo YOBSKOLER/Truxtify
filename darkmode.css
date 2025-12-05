@@ -1,0 +1,41 @@
+/* 🌞 Mode clair par défaut */
+body {
+  background: #f8f9fa;
+  color: #212529;
+}
+
+/* 🌙 Mode sombre */
+body.dark-mode {
+  background: #121212;
+  color: #eaeaea;
+}
+
+/* Navbar sombre */
+body.dark-mode .navbar {
+  background: #000 !important;
+}
+
+/* Cartes produits */
+body.dark-mode .card {
+  background: #1e1e1e;
+  color: #fff;
+}
+
+/* Boutons */
+body.dark-mode .btn {
+  background: #333;
+  color: #fff;
+  border-color: #444;
+}
+body.dark-mode .cart-container {
+  background: #1e1e1e;
+  color: #fff;
+}
+body.dark-mode {
+  background: #1e1e1e;
+  color: #fff;
+}
+body.dark-mode header {
+  background: #1e1e1e;
+  color: #004080;
+}
