@@ -1,0 +1,109 @@
+function getCart() {
+  return JSON.parse(localStorage.getItem("cart")) || [];
+}
+
+function saveCart(cart) {
+  localStorage.setItem("cart", JSON.stringify(cart));
+}
+
+function formatPrice(value) {
+  return Number(value).toLocaleString("fr-FR") + " FCFA";
+}
+
+// compteur = nombre de produits distincts
+function updateCartCount() {
+  const cart = getCart();
+  document.getElementById("cart-count").textContent = cart.length;
+}
+
+// ajout au panier
+function initAddToCart() {
+  document.querySelectorAll(".btn-add-to-cart").forEach((button) => {
+    button.addEventListener("click", () => {
+      const id = button.dataset.id;
+      const name = button.dataset.name;
+      const price = parseInt(button.dataset.price);
+      const image = button.dataset.image; // ex: "OIP.webp"
+
+      let cart = getCart();
+      const existing = cart.find((item) => item.id === id);
+
+      if (existing) {
+        existing.quantity += 1;
+      } else {
+        cart.push({ id, name, price, quantity: 1, image });
+      }
+
+      saveCart(cart);
+      updateCartCount();
+    });
+  });
+}
+
+// afficher panier
+function renderCart() {
+  const cartItems = document.getElementById("cart-items");
+  if (!cartItems) return;
+
+  const cart = getCart();
+  let subtotal = 0;
+  cartItems.innerHTML = "";
+
+  if (cart.length === 0) {
+    cartItems.innerHTML = "<p>Votre panier est vide.</p>";
+  }
+
+  cart.forEach((item, index) => {
+    const itemTotal = item.price * item.quantity;
+    subtotal += itemTotal;
+
+    cartItems.innerHTML += `
+      <div class="cart-item d-flex align-items-center justify-content-between border-bottom pb-3 mb-3">
+        <div class="d-flex align-items-center">
+          <img src="photos/${item.image}" alt="${item.name}" class="cart-img" />
+          <div class="ms-3">
+            <h5>${item.name}</h5>
+            <input type="number" value="${item.quantity}" min="1"
+              class="form-control w-50 quantity"
+              data-index="${index}">
+            <span class="btn-remove text-danger" data-index="${index}">Supprimer</span>
+          </div>
+        </div>
+        <h5 class="item-total">${formatPrice(itemTotal)}</h5>
+      </div>`;
+  });
+
+  document.getElementById("subtotal").textContent = formatPrice(subtotal);
+  const shipping = cart.length > 0 ? 3000 : 0;
+  document.getElementById("cart-total").textContent = formatPrice(
+    subtotal + shipping
+  );
+
+  // mise à jour quantité
+  document.querySelectorAll(".quantity").forEach((input) => {
+    input.addEventListener("change", () => {
+      let cart = getCart();
+      cart[input.dataset.index].quantity = parseInt(input.value);
+      saveCart(cart);
+      renderCart();
+      updateCartCount();
+    });
+  });
+
+  // suppression
+  document.querySelectorAll(".btn-remove").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      let cart = getCart();
+      cart.splice(btn.dataset.index, 1);
+      saveCart(cart);
+      renderCart();
+      updateCartCount();
+    });
+  });
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  updateCartCount();
+  initAddToCart();
+  renderCart();
+});
