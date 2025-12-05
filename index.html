@@ -1,0 +1,948 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <!-- Swiper CSS pour le carousel responsive -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
+    <link rel="stylesheet" href="css/header.css" />
+    <link rel="stylesheet" href="css/head.css" />
+    <title>Header</title>
+  </head>
+  <body>
+    <header class="sticky-top">
+      <div class="logo">
+        <a href="header.html">
+          <strong
+            ><span>TRU<span class="custom-x"></span>TIFY</span></strong
+          >
+        </a>
+      </div>
+      <form class="search-bar d-flex me-3">
+        <input
+          class="form-control"
+          type="search"
+          placeholder="search for products"
+        />
+      </form>
+      <div class="navbar navbar-expand-lg">
+        <ul class="navbar me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" href="index.html">HOME</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="boutique.html">SHOP</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href=".html">CONTACT</a>
+          </li>
+          <!-- Ici, on insère dynamiquement le bouton Connexion ou le menu
+          utilisateur -->
+          <div id="user-menu"></div>
+
+          <!-- Panier -->
+          <a href="cart.html" class="btn btn-warning ms-2">
+            🛒 Panier(<span id="cart-count">0</span>)
+          </a>
+        </ul>
+      </div>
+    </header>
+    <div class="hero">
+      <div
+        id="heroCarousel"
+        class="carousel slide h-100"
+        data-bs-ride="carousel"
+      >
+        <div class="carousel-indicators">
+          <button
+            type="button"
+            data-bs-target="#heroCarousel"
+            data-bs-slide-to="0"
+            class="active"
+            aria-current="true"
+            aria-label="Slide 1"
+          ></button>
+          <button
+            type="button"
+            data-bs-target="#heroCarousel"
+            data-bs-slide-to="1"
+            aria-label="Slide 2"
+          ></button>
+          <button
+            type="button"
+            data-bs-target="#heroCarousel"
+            data-bs-slide-to="2"
+            aria-label="Slide 3"
+          ></button>
+        </div>
+        <div class="carousel-inner h-100">
+          <div class="carousel-item active h-100">
+            <video
+              src="TRUXTIFY.mp4"
+              autoplay
+              loop
+              muted
+              class="hero-carousel-media"
+            ></video>
+            <div class="carousel-caption d-none d-md-block">
+              <h1>Welcome to Truxtify</h1>
+              <p>Discover our best offer and exclusive promotion !</p>
+              <a href="boutique.html" class="btn btn-dark btn-lg">SHOP NOW</a>
+            </div>
+          </div>
+          <div class="carousel-item h-100">
+            <img
+              src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80"
+              class="hero-carousel-media"
+              alt="Photo 1"
+            />
+            <div class="carousel-caption d-none d-md-block">
+              <h1>Photo 1</h1>
+              <p>Description photo 1</p>
+            </div>
+          </div>
+          <div class="carousel-item h-100">
+            <img
+              src="https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=800&q=80"
+              class="hero-carousel-media"
+              alt="Photo 2"
+            />
+            <div class="carousel-caption d-none d-md-block">
+              <h1>Photo 2</h1>
+              <p>Description photo 2</p>
+            </div>
+          </div>
+        </div>
+        <button
+          class="carousel-control-prev"
+          type="button"
+          data-bs-target="#heroCarousel"
+          data-bs-slide="prev"
+          title="Précédent"
+        >
+          <span class="carousel-control-prev-icon"></span>
+        </button>
+        <button
+          class="carousel-control-next"
+          type="button"
+          data-bs-target="#heroCarousel"
+          data-bs-slide="next"
+          title="Suivant"
+        >
+          <span class="carousel-control-next-icon"></span>
+        </button>
+      </div>
+    </div>
+    <!--categories -->
+    <section class="py-4">
+      <div class="container">
+        <div class="categories-header mb-3">
+          <h2 class="mb-0 text-start">
+            <strong>Featured Categories</strong>
+          </h2>
+          <!-- Contrôles Swiper -->
+          <div class="swiper-button">
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
+          </div>
+        </div>
+        <div class="swiper categories-swiper">
+          <div class="swiper-wrapper text-center">
+            <div class="swiper-slide">
+              <div class="card category-card p-3 shadow-sm">
+                <a href=""
+                  ><img
+                    src="https://img.icons8.com/color/96/t-shirt.png"
+                    class="mx-auto"
+                    alt="Clothing"
+                /></a>
+                <h5 class="mt-2">Mode</h5>
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <div class="card category-card p-3 shadow-sm">
+                <a href=""
+                  ><img
+                    src="https://img.icons8.com/color/96/smartphone--v1.png"
+                    class="mx-auto"
+                    alt="Electronics"
+                /></a>
+                <h5 class="mt-2">Electronics</h5>
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <div class="card category-card p-3 shadow-sm">
+                <a href=""
+                  ><img
+                    src="https://img.icons8.com/color/96/lamp.png"
+                    class="mx-auto"
+                    alt="Home & Living"
+                /></a>
+                <h5 class="mt-2">Home & Living</h5>
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <div class="card category-card p-3 shadow-sm">
+                <a href=""
+                  ><img
+                    src="https://img.icons8.com/color/96/necklace.png"
+                    class="mx-auto"
+                    alt="Jewelry"
+                /></a>
+                <h5 class="mt-2">Jewelry</h5>
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <div class="card category-card p-3 shadow-sm">
+                <a href=""
+                  ><img
+                    src="https://img.icons8.com/color/96/laptop--v1.png"
+                    class="mx-auto"
+                    alt="Computers"
+                /></a>
+                <h5 class="mt-2">Computers</h5>
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <div class="card category-card p-3 shadow-sm">
+                <a href=""
+                  ><img
+                    src="https://img.icons8.com/color/96/shampoo.png"
+                    class="mx-auto"
+                    alt="Skin-care"
+                /></a>
+                <h5 class="mt-2">Beauty / Self-care</h5>
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <div class="card category-card p-3 shadow-sm">
+                <a href=""
+                  ><img
+                    src="https://img.icons8.com/color/96/trainers.png"
+                    class="mx-auto"
+                    alt="Shoes"
+                /></a>
+                <h5 class="mt-2">Shoes/fitness</h5>
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <div class="card category-card p-3 shadow-sm">
+                <a href=""
+                  ><img
+                    src="https://img.icons8.com/color/96/teddy-bear.png"
+                    class="mx-auto"
+                    alt="Kids"
+                /></a>
+                <h5 class="mt-2">Kids / Toys</h5>
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <div class="card category-card p-3 shadow-sm">
+                <a href=""
+                  ><img
+                    src="https://img.icons8.com/color/96/apple-watch-apps.png"
+                    class="mx-auto"
+                    alt="Connected-Watch"
+                /></a>
+                <h5 class="mt-2">Connected Watch</h5>
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <div class="card category-card p-3 shadow-sm">
+                <a href=""
+                  ><img
+                    src="https://img.icons8.com/emoji/96/handbag.png"
+                    class="mx-auto"
+                    alt="hand-bag"
+                /></a>
+                <h5 class="mt-2">hand-bag</h5>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!--Reduction-->
+    <!--<section class="py-4">
+      <div class="container" style="display: ">
+        <div class="row g-4">
+          <div class="col-md-3">
+            <div class="card category-card p-3 shadow-sm">
+              <img
+                src="https://img.icons8.com/color/96/t-shirt.png"
+                class="mx-auto"
+                alt="Clothing"
+              />
+              <h1>Welcome to Our Website</h1>
+              <p>Your success starts here.</p>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="card category-card p-3 shadow-sm">
+              <img src="" alt="Photo" class="auto" />
+              <h1>Welcome to Our Website</h1>
+              <p>Your success starts here.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>-->
+    <!-- Produits phares -->
+    <section class="py-5 bg-light">
+      <div class="container">
+        <h2 class="text-center mb-4">Produits phares</h2>
+        <div class="row g-4">
+          <div class="col-md-3">
+            <div class="card product-card shadow-sm">
+              <span
+                class="wishlist-icon"
+                data-id="1"
+                data-name="Montre Élégante"
+                data-price="15000"
+                data-image="photos/OIP.png"
+                >♡</span
+              >
+              <a href="product.html"
+                ><img
+                  src="photos/OIP.png"
+                  class="card-img-top"
+                  alt="Produit 1"
+                />
+              </a>
+              <div class="card-body text-center">
+                <h5 class="card-title">Montre Elegante</h5>
+                <p class="text-muted">15.000 FCFA</p>
+                <a href="product.html" class="btn btn-sm btn-details"
+                  >Voir détails</a
+                >
+                <button
+                  class="btn btn-add-to-cart"
+                  data-id="1"
+                  data-name="Montre Elegante"
+                  data-price="10000"
+                  data-image="OIP.png"
+                >
+                  Ajouter au panier
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="card product-card shadow-sm">
+              <span
+                class="wishlist-icon"
+                data-id="5"
+                data-name="New Balance"
+                data-price="15000"
+                data-image="photos/IMG-20250818-WA0009.jpg"
+                >♡</span
+              >
+              <a href="product.html"
+                ><img
+                  src="photos/IMG-20250818-WA0009.jpg"
+                  class="card-img-top"
+                  alt="Produit 5"
+              /></a>
+              <div class="card-body text-center">
+                <h5 class="card-title">New Balance</h5>
+                <p class="text-muted">15.000 FCFA</p>
+                <a href="product.html" class="btn btn-sm btn-details"
+                  >Voir détails</a
+                >
+                <button
+                  class="btn btn-add-to-cart"
+                  data-id="5"
+                  data-name="New Balance"
+                  data-price="15000"
+                  data-image="IMG-20250818-WA0009.jpg"
+                >
+                  Ajouter au panier
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="card product-card shadow-sm">
+              <span
+                class="wishlist-icon"
+                data-id="6"
+                data-name="Pair Homme"
+                data-price="30000"
+                data-image="photos/IMG-20250818-WA0008.jpg"
+                >♡</span
+              >
+              <a href="product.html"
+                ><img
+                  src="photos/IMG-20250818-WA0008.jpg"
+                  class="card-img-top"
+                  alt="Produit 3"
+              /></a>
+              <div class="card-body text-center">
+                <h5 class="card-title">Pair Homme</h5>
+                <p class="text-muted">30.000 FCFA</p>
+                <a href="product.html" class="btn btn-sm btn-details"
+                  >Voir détails</a
+                >
+                <button
+                  class="btn btn-add-to-cart"
+                  data-id="6"
+                  data-name="Pair Homme"
+                  data-price="30000"
+                  data-image="IMG-20250818-WA0008.jpg"
+                >
+                  Ajouter au panier
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="card product-card shadow-sm">
+              <span
+                class="wishlist-icon"
+                data-id="3"
+                data-name="Jordan 4"
+                data-price="30000"
+                data-image="photos/jordan4.jpeg"
+                >♡</span
+              >
+              <a href="product.html"
+                ><img
+                  src="photos/jordan4.jpeg"
+                  class="card-img-top"
+                  alt="Produit 4"
+              /></a>
+              <div class="card-body text-center">
+                <h5 class="card-title">Jordan 4</h5>
+                <p class="text-muted">10.000 FCFA</p>
+                <a href="product.html" class="btn btn-sm btn-details"
+                  >Voir détails</a
+                >
+                <button
+                  class="btn btn-add-to-cart"
+                  data-id="3"
+                  data-name="Jordan 4"
+                  data-price="30000"
+                  data-image="jordan4.jpeg"
+                >
+                  Ajouter au panier
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="card product-card shadow-sm">
+              <span
+                class="wishlist-icon"
+                data-id="3"
+                data-name="Jordan 4"
+                data-price="30000"
+                data-image="photos/jordan4.jpeg"
+                >♡</span
+              >
+              <a href="product.html"
+                ><img
+                  src="photos/jordan4.jpeg"
+                  class="card-img-top"
+                  alt="Produit 4"
+              /></a>
+              <div class="card-body text-center">
+                <h5 class="card-title">Jordan 4</h5>
+                <p class="text-muted">10.000 FCFA</p>
+                <a href="product.html" class="btn btn-sm btn-details"
+                  >Voir détails</a
+                >
+                <button
+                  class="btn btn-add-to-cart"
+                  data-id="3"
+                  data-name="Jordan 4"
+                  data-price="30000"
+                  data-image="jordan4.jpeg"
+                >
+                  Ajouter au panier
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="card product-card shadow-sm">
+              <span
+                class="wishlist-icon"
+                data-id="3"
+                data-name="Jordan 4"
+                data-price="30000"
+                data-image="photos/jordan4.jpeg"
+                >♡</span
+              >
+              <a href="product.html"
+                ><img
+                  src="photos/jordan4.jpeg"
+                  class="card-img-top"
+                  alt="Produit 4"
+              /></a>
+              <div class="card-body text-center">
+                <h5 class="card-title">Jordan 4</h5>
+                <p class="text-muted">10.000 FCFA</p>
+                <a href="product.html" class="btn btn-sm btn-details"
+                  >Voir détails</a
+                >
+                <button
+                  class="btn btn-add-to-cart"
+                  data-id="3"
+                  data-name="Jordan 4"
+                  data-price="30000"
+                  data-image="jordan4.jpeg"
+                >
+                  Ajouter au panier
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="card product-card shadow-sm">
+              <span
+                class="wishlist-icon"
+                data-id="3"
+                data-name="Jordan 4"
+                data-price="30000"
+                data-image="photos/jordan4.jpeg"
+                >♡</span
+              >
+              <a href="product.html"
+                ><img
+                  src="photos/jordan4.jpeg"
+                  class="card-img-top"
+                  alt="Produit 4"
+              /></a>
+              <div class="card-body text-center">
+                <h5 class="card-title">Jordan 4</h5>
+                <p class="text-muted">10.000 FCFA</p>
+                <a href="product.html" class="btn btn-sm btn-details"
+                  >Voir détails</a
+                >
+                <button
+                  class="btn btn-add-to-cart"
+                  data-id="3"
+                  data-name="Jordan 4"
+                  data-price="30000"
+                  data-image="jordan4.jpeg"
+                >
+                  Ajouter au panier
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="card product-card shadow-sm">
+              <span
+                class="wishlist-icon"
+                data-id="3"
+                data-name="Jordan 4"
+                data-price="30000"
+                data-image="photos/jordan4.jpeg"
+                >♡</span
+              >
+              <a href="product.html"
+                ><img
+                  src="photos/jordan4.jpeg"
+                  class="card-img-top"
+                  alt="Produit 4"
+              /></a>
+              <div class="card-body text-center">
+                <h5 class="card-title">Jordan 4</h5>
+                <p class="text-muted">10.000 FCFA</p>
+                <a href="product.html" class="btn btn-sm btn-details"
+                  >Voir détails</a
+                >
+                <button
+                  class="btn btn-add-to-cart"
+                  data-id="3"
+                  data-name="Jordan 4"
+                  data-price="30000"
+                  data-image="jordan4.jpeg"
+                >
+                  Ajouter au panier
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="card product-card shadow-sm">
+              <span
+                class="wishlist-icon"
+                data-id="3"
+                data-name="Jordan 4"
+                data-price="30000"
+                data-image="photos/jordan4.jpeg"
+                >♡</span
+              >
+              <a href="product.html"
+                ><img
+                  src="photos/jordan4.jpeg"
+                  class="card-img-top"
+                  alt="Produit 4"
+              /></a>
+              <div class="card-body text-center">
+                <h5 class="card-title">Jordan 4</h5>
+                <p class="text-muted">10.000 FCFA</p>
+                <a href="product.html" class="btn btn-sm btn-details"
+                  >Voir détails</a
+                >
+                <button
+                  class="btn btn-add-to-cart"
+                  data-id="3"
+                  data-name="Jordan 4"
+                  data-price="30000"
+                  data-image="jordan4.jpeg"
+                >
+                  Ajouter au panier
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="card product-card shadow-sm">
+              <span
+                class="wishlist-icon"
+                data-id="3"
+                data-name="Jordan 4"
+                data-price="30000"
+                data-image="photos/jordan4.jpeg"
+                >♡</span
+              >
+              <a href="product.html"
+                ><img
+                  src="photos/jordan4.jpeg"
+                  class="card-img-top"
+                  alt="Produit 4"
+              /></a>
+              <div class="card-body text-center">
+                <h5 class="card-title">Jordan 4</h5>
+                <p class="text-muted">10.000 FCFA</p>
+                <a href="product.html" class="btn btn-sm btn-details"
+                  >Voir détails</a
+                >
+                <button
+                  class="btn btn-add-to-cart"
+                  data-id="3"
+                  data-name="Jordan 4"
+                  data-price="30000"
+                  data-image="jordan4.jpeg"
+                >
+                  Ajouter au panier
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="card product-card shadow-sm">
+              <span
+                class="wishlist-icon"
+                data-id="3"
+                data-name="Jordan 4"
+                data-price="30000"
+                data-image="photos/jordan4.jpeg"
+                >♡</span
+              >
+              <a href="product.html"
+                ><img
+                  src="photos/jordan4.jpeg"
+                  class="card-img-top"
+                  alt="Produit 4"
+              /></a>
+              <div class="card-body text-center">
+                <h5 class="card-title">Jordan 4</h5>
+                <p class="text-muted">10.000 FCFA</p>
+                <a href="product.html" class="btn btn-sm btn-details"
+                  >Voir détails</a
+                >
+                <button
+                  class="btn btn-add-to-cart"
+                  data-id="3"
+                  data-name="Jordan 4"
+                  data-price="30000"
+                  data-image="jordan4.jpeg"
+                >
+                  Ajouter au panier
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="card product-card shadow-sm">
+              <span
+                class="wishlist-icon"
+                data-id="3"
+                data-name="Jordan 4"
+                data-price="30000"
+                data-image="photos/jordan4.jpeg"
+                >♡</span
+              >
+              <a href="product.html"
+                ><img
+                  src="photos/jordan4.jpeg"
+                  class="card-img-top"
+                  alt="Produit 4"
+              /></a>
+              <div class="card-body text-center">
+                <h5 class="card-title">Jordan 4</h5>
+                <p class="text-muted">10.000 FCFA</p>
+                <a href="product.html" class="btn btn-sm btn-details"
+                  >Voir détails</a
+                >
+                <button
+                  class="btn btn-add-to-cart"
+                  data-id="3"
+                  data-name="Jordan 4"
+                  data-price="30000"
+                  data-image="jordan4.jpeg"
+                >
+                  Ajouter au panier
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="card product-card shadow-sm">
+              <span
+                class="wishlist-icon"
+                data-id="3"
+                data-name="Jordan 4"
+                data-price="30000"
+                data-image="photos/jordan4.jpeg"
+                >♡</span
+              >
+              <a href="product.html"
+                ><img
+                  src="photos/jordan4.jpeg"
+                  class="card-img-top"
+                  alt="Produit 4"
+              /></a>
+              <div class="card-body text-center">
+                <h5 class="card-title">Jordan 4</h5>
+                <p class="text-muted">10.000 FCFA</p>
+                <a href="product.html" class="btn btn-sm btn-details"
+                  >Voir détails</a
+                >
+                <button
+                  class="btn btn-add-to-cart"
+                  data-id="3"
+                  data-name="Jordan 4"
+                  data-price="30000"
+                  data-image="jordan4.jpeg"
+                >
+                  Ajouter au panier
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="card product-card shadow-sm">
+              <span
+                class="wishlist-icon"
+                data-id="3"
+                data-name="Jordan 4"
+                data-price="30000"
+                data-image="photos/jordan4.jpeg"
+                >♡</span
+              >
+              <a href="product.html"
+                ><img
+                  src="photos/jordan4.jpeg"
+                  class="card-img-top"
+                  alt="Produit 4"
+              /></a>
+              <div class="card-body text-center">
+                <h5 class="card-title">Jordan 4</h5>
+                <p class="text-muted">10.000 FCFA</p>
+                <a href="product.html" class="btn btn-sm btn-details"
+                  >Voir détails</a
+                >
+                <button
+                  class="btn btn-add-to-cart"
+                  data-id="3"
+                  data-name="Jordan 4"
+                  data-price="30000"
+                  data-image="jordan4.jpeg"
+                >
+                  Ajouter au panier
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Newsletter -->
+    <section class="py-5 text-center">
+      <div class="container">
+        <h3>Inscrivez-vous à notre newsletter</h3>
+        <p>Recevez nos meilleures offres directement dans votre boîte mail</p>
+        <form class="d-flex justify-content-center">
+          <input
+            type="email"
+            class="form-control w-50 me-2"
+            placeholder="Votre email"
+          />
+          <button class="btn btn-dark">S'inscrire</button>
+        </form>
+      </div>
+    </section>
+    <!-- Popup de Connexion -->
+    <div
+      id="popupOverlay"
+      class="d-none position-fixed top-0 start-0 w-100 h-100 bg-dark bg-opacity-75 d-flex justify-content-center align-items-center"
+      style="z-index: 1050; backdrop-filter: blur(3px)"
+    >
+      <div
+        class="bg-white rounded p-4 shadow-lg"
+        style="width: 95%; max-width: 500px; position: relative"
+      >
+        <button
+          onclick="closePopup()"
+          class="btn-close position-absolute top-0 end-0 m-3"
+        ></button>
+
+        <!-- Onglets -->
+        <div class="d-flex border-bottom mb-4">
+          <button
+            id="loginTab"
+            class="tab-btn active"
+            onclick="switchTab('login')"
+          >
+            Connexion
+          </button>
+          <button id="signupTab" class="tab-btn" onclick="switchTab('signup')">
+            Inscription
+          </button>
+        </div>
+
+        <!-- Formulaire Connexion -->
+        <div id="loginForm">
+          <h4 class="mb-3 text-center">Connexion</h4>
+          <input
+            type="email"
+            class="form-control mb-3"
+            placeholder="Adresse email"
+          />
+          <input
+            type="password"
+            class="form-control mb-3"
+            placeholder="Mot de passe"
+          />
+          <button class="btn btn-warning w-100 mb-2">
+            Continuer avec l'email</button
+          > 
+        </div>
+        <!-- Formulaire Inscription -->
+        <div id="signupForm" class="d-none">
+          <h4 class="mb-3 text-center">Inscription</h4>
+          <input
+            type="text"
+            class="form-control mb-3"
+            placeholder="Nom complet"
+          />
+          <input
+            type="email"
+            class="form-control mb-3"
+            placeholder="Adresse email"
+          />
+          <input
+            type="password"
+            class="form-control mb-3"
+            placeholder="Mot de passe"
+          />
+          <select name="role" class="form-select" required>
+            <option value="">Sélectionner un type de compte</option>
+            <option value="client">Client</option>
+            <option value="marchand">Marchand</option>
+          </select>
+
+          <button class="btn btn-success w-100 mb-2">Créer un compte</button>
+        </div>
+
+        <!-- Boutons alternatifs -->
+        <button
+          class="btn btn-light w-100 mb-2 d-flex align-items-center justify-content-center gap-2 border"
+        >
+          <img src="https://img.icons8.com/color/16/google-logo.png" />
+          Continuer avec Google
+        </button>
+        <button
+          class="btn btn-light w-100 mb-3 d-flex align-items-center justify-content-center gap-2 border"
+        >
+          <img src="https://img.icons8.com/ios-filled/16/mac-os.png" />
+          Continuer avec Apple
+        </button>
+      </div>
+    </div>
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-4">
+            <h5>Truxtify</h5>
+            <p>Votre marketplace moderne et élégante.</p>
+          </div>
+          <div class="col-md-4">
+            <h5>Liens utiles</h5>
+            <ul class="list-unstyled">
+              <li><a href="boutique.html">Boutique</a></li>
+              <li><a href="#">Contact</a></li>
+              <li><a href="#">CGU</a></li>
+              <li><a href="#">Confidentialité</a></li>
+            </ul>
+          </div>
+          <div class="col-md-4">
+            <h5>Suivez-nous</h5>
+            <a href="#">Facebook</a> | <a href="#">Instagram</a> |
+            <a href="#">Twitter</a>
+          </div>
+        </div>
+        <div class="text-center mt-4">
+          <small>&copy; 2025 Truxtify - Tous droits réservés</small>
+        </div>
+      </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+  <!-- Swiper JS pour le carousel responsive -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script>
+    var swiper = new Swiper(".categories-swiper", {
+      slidesPerView: 5,
+      spaceBetween: 20,
+      navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev",
+      },
+      pagination: {
+        el: ".swiper-pagination",
+        clickable: true,
+      },
+      breakpoints: {
+        0: {
+          slidesPerView: 2,
+        },
+        768: {
+          slidesPerView: 3,
+        },
+        992: {
+          slidesPerView: 5,
+        },
+      },
+    });
+  </script>
+  <script src="js/cart.js"></script>
+  <script src="js/popup.js"></script>
+  <script src="js/header.js"></script>
+  <script src="js/wishlist.js"></script>
+  <script src="js/dark-mode.js"></script>
+</html>

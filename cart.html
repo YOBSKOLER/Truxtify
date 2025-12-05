@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Truxtify - Panier</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/darkmode.css" />
+    <link rel="stylesheet" href="css/head.css" />
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f8f9fa;
+      }
+      h1 {
+        background-color: white;
+        color: #004080;
+        padding: 15px 0;
+      }
+      h1 {
+        margin: 0;
+        text-align: center;
+        font-size: 1.8rem;
+      }
+      .cart-container {
+        margin: 30px auto;
+        max-width: 1000px;
+        background: white;
+        border-radius: 12px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+      }
+      .cart-item img {
+        width: 90px;
+        border-radius: 10px;
+      }
+      .cart-img {
+        width: 80px;
+        height: 80px;
+        object-fit: cover;
+        border-radius: 5px;
+      }
+      .cart-summary {
+        border-left: 2px solid #ddd;
+        padding-left: 20px;
+      }
+      .btn-checkout {
+        background-color: #004080;
+        color: white;
+        width: 100%;
+      }
+      .btn-checkout:hover {
+        background-color: #003060;
+        color: white;
+      }
+      .btn-remove {
+        color: red;
+        cursor: pointer;
+        font-size: 0.9rem;
+      }
+    </style>
+  </head>
+  <body>
+    <header class="sticky-top">
+      <div class="logo">
+        <a href="header.html">
+          <strong
+            ><span>TRU<span class="custom-x"></span>TIFY</span></strong
+          >
+        </a>
+      </div>
+      <!--<form class="search-bar d-flex me-3">
+        <input
+          class="form-control"
+          type="search"
+          placeholder="search for products"
+        />
+      </form>-->
+      <div class="navbar navbar-expand-lg">
+        <ul class="navbar me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">HOME</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="boutique.html">SHOP</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href=".html">CONTACT</a>
+          </li>
+          <!-- Ici, on insère dynamiquement le bouton Connexion ou le menu
+          utilisateur -->
+          <div id="user-menu"></div>
+
+          <!-- Panier -->
+          <a href="cart.html" class="btn btn-warning ms-2 active">
+            🛒 Panier(<span id="cart-count">0</span>)
+          </a>
+        </ul>
+      </div>
+    </header>
+
+    <h1><strong>Mon Panier</strong></h1>
+
+    <!-- Panier -->
+    <div class="cart-container row">
+      <div class="col-md-8" id="cart-items"></div>
+
+      <!-- Résumé panier -->
+      <div class="col-md-4 cart-summary">
+        <h4>Résumé</h4>
+        <p>Sous-total : <span class="float-end" id="subtotal">0 FCFA</span></p>
+        <p>Livraison : <span class="float-end">3.000 FCFA</span></p>
+        <hr />
+        <h5>Total : <span class="float-end" id="cart-total">0 FCFA</span></h5>
+        <a href="checkout.html"
+          ><button class="btn btn-checkout mt-3" id="checkout">
+            Passer à la caisse
+          </button></a
+        >
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-4">
+            <h5>Truxtify</h5>
+            <p>Votre marketplace moderne et élégante.</p>
+          </div>
+          <div class="col-md-4">
+            <h5>Liens utiles</h5>
+            <ul class="list-unstyled">
+              <li><a href="boutique.html">Boutique</a></li>
+              <li><a href="#">Contact</a></li>
+              <li><a href="#">CGU</a></li>
+              <li><a href="#">Confidentialité</a></li>
+            </ul>
+          </div>
+          <div class="col-md-4">
+            <h5>Suivez-nous</h5>
+            <a href="#">Facebook</a> | <a href="#">Instagram</a> |
+            <a href="#">Twitter</a>
+          </div>
+        </div>
+        <div class="text-center mt-4">
+          <small>&copy; 2025 Truxtify - Tous droits réservés</small>
+        </div>
+      </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/cart.js"></script>
+    <script src="js/header.js"></script>
+    <script src="js/dark-mode.js"></script>
+  </body>
+</html>

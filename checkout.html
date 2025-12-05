@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/darkmode.css" />
+    <link rel="stylesheet" href="css/head.css" />
+    <title>Checkout - Truxtify</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background: #f5f7fa;
+      }
+
+      .checkout-container {
+        display: grid;
+        grid-template-columns: 2fr 1fr; /* Form à gauche (large), Summary à droite */
+        gap: 20px;
+        max-width: 1200px;
+        margin: 30px auto;
+        padding: 20px;
+      }
+
+      .checkout-form,
+      .order-summary {
+        background: white;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
+
+      h2 {
+        margin-bottom: 15px;
+        color: #1e1e2f;
+      }
+
+      .form-group {
+        margin-bottom: 15px;
+      }
+
+      label {
+        display: block;
+        font-weight: bold;
+        margin-bottom: 5px;
+      }
+
+      input,
+      select {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+      }
+
+      .payment-methods {
+        display: flex;
+        gap: 10px;
+        margin-top: 10px;
+      }
+
+      .payment-methods img {
+        width: 50px;
+        height: auto;
+        cursor: pointer;
+        border: 2px solid transparent;
+        border-radius: 5px;
+      }
+
+      .payment-methods img.active {
+        border-color: #007bff;
+      }
+
+      /* ===== Order Summary CSS corrigé ===== */
+      .card {
+        border-radius: 12px;
+        background: #fff;
+        border: none;
+      }
+
+      #order-items {
+        max-height: 300px;
+        overflow-y: auto;
+        margin-bottom: 10px;
+      }
+
+      .order-item {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 8px 0;
+        border-bottom: 1px solid #eee;
+      }
+
+      .order-item:last-child {
+        border-bottom: none;
+      }
+
+      .order-item img {
+        width: 50px;
+        height: 50px;
+        object-fit: cover;
+        border-radius: 8px;
+      }
+
+      .order-item .details {
+        flex: 1;
+        margin-left: 10px;
+      }
+
+      .order-item .details h6 {
+        font-size: 14px;
+        margin: 0;
+      }
+
+      .order-item .details small {
+        color: #666;
+        font-size: 12px;
+      }
+
+      .order-item .price {
+        font-weight: bold;
+        font-size: 14px;
+      }
+
+      .card p,
+      .card h5 {
+        display: flex;
+        justify-content: space-between;
+        margin: 5px 0;
+      }
+
+      .card h5 {
+        font-size: 18px;
+        font-weight: bold;
+        color: #222;
+      }
+
+      button {
+        background: #004080;
+        color: white;
+        padding: 12px;
+        border: none;
+        border-radius: 5px;
+        width: 100%;
+        font-size: 16px;
+        cursor: pointer;
+      }
+
+      button:hover {
+        background: #0056b3;
+      }
+    </style>
+  </head>
+  <body>
+    <header class="sticky-top">
+      <div class="logo">
+        <a href="header.html">
+          <strong
+            ><span>TRU<span class="custom-x"></span>TIFY</span></strong
+          >
+        </a>
+      </div>
+      <!--<form class="search-bar d-flex me-3">
+        <input
+          class="form-control"
+          type="search"
+          placeholder="search for products"
+        />
+      </form>-->
+      <div class="navbar navbar-expand-lg">
+        <ul class="navbar me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">HOME</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="boutique.html">SHOP</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href=".html">CONTACT</a>
+          </li>
+          <!-- Ici, on insère dynamiquement le bouton Connexion ou le menu
+          utilisateur -->
+          <div id="user-menu"></div>
+
+          <!-- Panier -->
+          <a href="cart.html" class="btn btn-warning ms-2 active">
+            🛒 Panier(<span id="cart-count">0</span>)
+          </a>
+        </ul>
+      </div>
+    </header>
+
+    <div class="checkout-container">
+      <!-- LEFT: Form -->
+      <div class="checkout-form">
+        <h2>Information de Livraison</h2>
+        <div class="form-group">
+          <label for="name">Full Name</label>
+          <input type="text" id="name" placeholder="John Doe" />
+        </div>
+        <div class="form-group">
+          <label for="address">Address</label>
+          <input type="text" id="address" placeholder="123 Main St" />
+        </div>
+        <div class="form-group">
+          <label for="city">City</label>
+          <input type="text" id="city" placeholder="Douala" />
+        </div>
+        <div class="form-group">
+          <label for="phone">Phone Number</label>
+          <input type="text" id="phone" placeholder="+237 6XX XXX XXX" />
+        </div>
+
+        <h2>Methode de Paiement</h2>
+        <div class="payment-methods">
+          <img
+            src="icon/momo.png"
+            alt="MTN"
+            id="mtn"
+            onclick="selectPayment('MTN', this)"
+          />
+          <img
+            src="icon/om.png"
+            alt="Orange Money"
+            id="om"
+            onclick="selectPayment('OM', this)"
+          />
+          <img
+            src="icon/visa.png"
+            alt="Credit Card"
+            id="card"
+            onclick="selectPayment('Card', this)"
+          />
+          <img
+            src="icon/paypal.png"
+            alt="PayPal"
+            id="paypal"
+            onclick="selectPayment('PayPal', this)"
+          />
+        </div>
+
+        <div id="payment-details"></div>
+      </div>
+
+      <!-- RIGHT: Order Summary -->
+      <div class="order-summary">
+        <h4 class="mb-3">Order Summary</h4>
+        <div id="order-items"></div>
+        <hr />
+        <p>Sous-total: <span id="order-subtotal"></span></p>
+        <p>Livraison: 3 000 FCFA</p>
+        <h5>Total: <span id="order-total"></span></h5>
+        <button type="submit" class="btn btn-primary w-100 mt-3">
+          Confirmer la commande
+        </button>
+      </div>
+    </div>
+    <footer class="footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-4">
+            <h5>Truxtify</h5>
+            <p>Votre marketplace moderne et élégante.</p>
+          </div>
+          <div class="col-md-4">
+            <h5>Liens utiles</h5>
+            <ul class="list-unstyled">
+              <li><a href="boutique.html">Boutique</a></li>
+              <li><a href="#">Contact</a></li>
+              <li><a href="#">CGU</a></li>
+              <li><a href="#">Confidentialité</a></li>
+            </ul>
+          </div>
+          <div class="col-md-4">
+            <h5>Suivez-nous</h5>
+            <a href="#">Facebook</a> | <a href="#">Instagram</a> |
+            <a href="#">Twitter</a>
+          </div>
+        </div>
+        <div class="text-center mt-4">
+          <small>&copy; 2025 Truxtify - Tous droits réservés</small>
+        </div>
+      </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script src="js/checkout.js"></script>
+    <script src="js/cart.js"></script>
+    <script src="js/header.js"></script>
+    <script src="js/dark-mode.js"></script>
+  </body>
+</html>

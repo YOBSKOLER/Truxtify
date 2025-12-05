@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Truxtify || Mon Compte</title>
+
+    <!-- Bootstrap & Icons -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/darkmode.css" />
+    <link rel="stylesheet" href="css/head.css" />
+
+    <style>
+      body {
+        background: #f6f8fb;
+      }
+
+      .page-wrap {
+        max-width: 1200px;
+        margin: 24px auto;
+        padding: 0 12px;
+      }
+      .page-title {
+        font-weight: 800;
+        color: #0b3d91;
+      }
+
+      .card-soft {
+        background: #fff;
+        border-radius: 14px;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+        border: 0;
+      }
+      .avatar {
+        width: 64px;
+        height: 64px;
+        border-radius: 50%;
+        object-fit: cover;
+        background: #eef2f7;
+      }
+      .stat-pill {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        border: 1.5px solid #e3e7ef;
+        border-radius: 12px;
+        padding: 12px 14px;
+        background: #fff;
+      }
+      .stat-pill .bi {
+        font-size: 20px;
+      }
+      .nav-tabs .nav-link {
+        font-weight: 600;
+      }
+      .order-thumb {
+        width: 48px;
+        height: 48px;
+        border-radius: 8px;
+        object-fit: cover;
+        background: #eef2f7;
+      }
+      .badge-soft {
+        background: #eef4ff;
+        color: #0d6efd;
+      }
+      .wishlist-btn {
+        position: relative;
+      }
+      .wishlist-count {
+        position: absolute;
+        top: -6px;
+        right: -6px;
+        background: #dc3545;
+        color: #fff;
+        font-size: 12px;
+        min-width: 20px;
+        line-height: 20px;
+        border-radius: 20px;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <header class="sticky-top">
+      <div class="logo">
+        <a href="header.html">
+          <strong
+            ><span>TRU<span class="custom-x"></span>TIFY</span></strong
+          >
+        </a>
+      </div>
+      <!--<form class="search-bar d-flex me-3">
+        <input
+          class="form-control"
+          type="search"
+          placeholder="search for products"
+        />
+      </form>-->
+      <div class="navbar navbar-expand-lg">
+        <ul class="navbar me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" href="index.html">HOME</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="boutique.html">SHOP</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href=".html">CONTACT</a>
+          </li>
+          <!-- Ici, on insère dynamiquement le bouton Connexion ou le menu
+          utilisateur 
+          <div id="user-menu"></div>-->
+
+          <!-- Panier & favoris -->
+          <!-- Actions à droite -->
+          <div class="d-flex align-items-center gap-2">
+            <a href="wishlist.html" class="btn btn-outline-light wishlist-btn">
+              <i class="bi bi-heart-fill text-danger"></i> favoris
+              <span id="wishlist-count" class="wishlist-count d-none dark"
+                >0</span
+              >
+            </a>
+            <a href="cart.html" class="btn btn-warning ms-2">
+              🛒 Panier(<span id="cart-count">0</span>)
+            </a>
+          </div>
+        </ul>
+      </div>
+    </header>
+
+    <main class="page-wrap">
+      <div
+        class="d-flex flex-wrap align-items-center justify-content-between mb-3"
+      >
+        <h2 class="page-title mb-0">Mon compte</h2>
+        <!-- Toggle Dark Mode -->
+        <button id="toggle-dark" class="btn btn-outline-secondary ms-3">
+          <i id="dark-icon" class="bi bi-moon"></i>
+        </button>
+        <button id="btn-logout" class="btn btn-outline-danger">
+          <i class="bi bi-box-arrow-right me-1"></i> Déconnexion
+        </button>
+      </div>
+
+      <!-- Bandeau profil + stats -->
+      <div class="row g-3 mb-3">
+        <div class="col-lg-8">
+          <div
+            class="card card-soft p-3 d-flex flex-wrap align-items-center gap-3"
+          >
+            <img
+              id="user-avatar"
+              class="avatar"
+              src="https://i.pravatar.cc/100?img=12"
+              alt="avatar"
+            />
+            <div class="flex-grow-1">
+              <h5 id="user-name" class="mb-1">Utilisateur</h5>
+              <div class="text-muted small" id="user-email">
+                email@exemple.com
+              </div>
+              <div class="text-muted small" id="user-phone">+237 …</div>
+            </div>
+            <a href="#profile" data-bs-toggle="tab" class="btn btn-primary">
+              <i class="bi bi-pencil me-1"></i> Modifier le profil
+            </a>
+          </div>
+        </div>
+
+        <div class="col-lg-4">
+          <div class="card card-soft p-3">
+            <div class="d-flex gap-2 flex-wrap">
+              <div class="stat-pill flex-fill">
+                <i class="bi bi-bag-check text-primary"></i>
+                <div>
+                  <div class="small text-muted">Commandes</div>
+                  <div id="stat-orders" class="fw-bold">0</div>
+                </div>
+              </div>
+              <div class="stat-pill flex-fill">
+                <i class="bi bi-heart text-danger"></i>
+                <div>
+                  <div class="small text-muted">Favoris</div>
+                  <div id="stat-wishlist" class="fw-bold">0</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Onglets -->
+      <div class="card card-soft p-3">
+        <ul class="nav nav-tabs" id="dashTabs" role="tablist">
+          <li class="nav-item" role="presentation">
+            <button
+              class="nav-link active"
+              id="tab-overview"
+              data-bs-toggle="tab"
+              data-bs-target="#pane-overview"
+              type="button"
+              role="tab"
+            >
+              Aperçu
+            </button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button
+              class="nav-link"
+              id="tab-orders"
+              data-bs-toggle="tab"
+              data-bs-target="#pane-orders"
+              type="button"
+              role="tab"
+            >
+              Mes commandes
+            </button>
+          </li>
+          <li class="nav-item" role="presentation" id="profile">
+            <button
+              class="nav-link"
+              id="tab-profile"
+              data-bs-toggle="tab"
+              data-bs-target="#pane-profile"
+              type="button"
+              role="tab"
+            >
+              Profil & adresses
+            </button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button
+              class="nav-link"
+              id="tab-security"
+              data-bs-toggle="tab"
+              data-bs-target="#pane-security"
+              type="button"
+              role="tab"
+            >
+              Sécurité
+            </button>
+          </li>
+        </ul>
+
+        <div class="tab-content pt-3">
+          <!-- Aperçu -->
+          <div
+            class="tab-pane fade show active"
+            id="pane-overview"
+            role="tabpanel"
+          >
+            <div class="row g-3">
+              <div class="col-md-6">
+                <div class="p-3 border rounded-3">
+                  <h6 class="mb-2">Dernière commande</h6>
+                  <div id="last-order" class="small text-muted">
+                    Aucune commande.
+                  </div>
+                  <a
+                    href="boutique.html"
+                    class="btn btn-sm btn-outline-primary mt-2"
+                  >
+                    <i class="bi bi-cart-plus me-1"></i> Continuer mes achats
+                  </a>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="p-3 border rounded-3">
+                  <h6 class="mb-2">Wishlist</h6>
+                  <p class="small text-muted mb-2">
+                    Retrouvez vos favoris et surveillez les baisses de prix.
+                  </p>
+                  <a href="wishlist.html" class="btn btn-sm btn-outline-danger">
+                    <i class="bi bi-heart-fill text-danger"></i> Voir mes
+                    favoris
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Commandes -->
+          <div class="tab-pane fade" id="pane-orders" role="tabpanel">
+            <div class="table-responsive">
+              <table class="table align-middle">
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>Date</th>
+                    <th>Articles</th>
+                    <th>Total</th>
+                    <th>Statut</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody id="orders-body">
+                  <!-- rempli par JS -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Profil -->
+          <div class="tab-pane fade" id="pane-profile" role="tabpanel">
+            <form id="profile-form" class="row g-3">
+              <div class="col-md-6">
+                <label class="form-label">Nom complet</label>
+                <input
+                  id="pf-name"
+                  type="text"
+                  class="form-control"
+                  placeholder="Votre nom"
+                />
+              </div>
+              <div class="col-md-6">
+                <label class="form-label">Email</label>
+                <input
+                  id="pf-email"
+                  type="email"
+                  class="form-control"
+                  placeholder="email@exemple.com"
+                />
+              </div>
+              <div class="col-md-6">
+                <label class="form-label">Téléphone</label>
+                <input
+                  id="pf-phone"
+                  type="text"
+                  class="form-control"
+                  placeholder="+237 …"
+                />
+              </div>
+              <div class="col-12">
+                <label class="form-label">Adresse</label>
+                <input
+                  id="pf-address"
+                  type="text"
+                  class="form-control"
+                  placeholder="Rue, quartier, ville"
+                />
+              </div>
+              <div class="col-12">
+                <button class="btn btn-primary">
+                  <i class="bi bi-save me-1"></i> Enregistrer
+                </button>
+              </div>
+            </form>
+          </div>
+
+          <!-- Sécurité -->
+          <div class="tab-pane fade" id="pane-security" role="tabpanel">
+            <form id="password-form" class="row g-3">
+              <div class="col-md-6">
+                <label class="form-label">Nouveau mot de passe</label>
+                <input
+                  id="pw-new"
+                  type="password"
+                  class="form-control"
+                  placeholder="••••••••"
+                />
+              </div>
+              <div class="col-md-6">
+                <label class="form-label">Confirmer</label>
+                <input
+                  id="pw-confirm"
+                  type="password"
+                  class="form-control"
+                  placeholder="••••••••"
+                />
+              </div>
+              <div class="col-12">
+                <button class="btn btn-outline-primary">
+                  <i class="bi bi-shield-lock me-1"></i> Mettre à jour
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </main>
+    <footer class="footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-4">
+            <h5>Truxtify</h5>
+            <p>Votre marketplace moderne et élégante.</p>
+          </div>
+          <div class="col-md-4">
+            <h5>Liens utiles</h5>
+            <ul class="list-unstyled">
+              <li><a href="boutique.html">Boutique</a></li>
+              <li><a href="#">Contact</a></li>
+              <li><a href="#">CGU</a></li>
+              <li><a href="#">Confidentialité</a></li>
+            </ul>
+          </div>
+          <div class="col-md-4">
+            <h5>Suivez-nous</h5>
+            <a href="#">Facebook</a> | <a href="#">Instagram</a> |
+            <a href="#">Twitter</a>
+          </div>
+        </div>
+        <div class="text-center mt-4">
+          <small>&copy; 2025 Truxtify - Tous droits réservés</small>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Bootstrap -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Tes scripts globaux (si tu en as déjà) -->
+    <script src="js/cart.js" defer></script>
+    <!-- compteur panier, getCart() -->
+    <script src="js/header.js" defer></script>
+    <!-- si tu as un header dynamique séparé -->
+
+    <!-- Script de cette page -->
+    <script src="js/dash.js" defer></script>
+    <script src="js/popup.js"></script>
+    <script src="js/dark-mode.js"></script>
+  </body>
+</html>
