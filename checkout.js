@@ -28,7 +28,7 @@ function renderOrderSummary() {
     orderItems.innerHTML += `
       <div class="d-flex align-items-center justify-content-between border-bottom pb-2 mb-2">
         <div class="d-flex align-items-center">
-          <img src="photos/${item.image}" alt="${
+          <img src="${item.image}" alt="${
       item.name
     }" style="width:50px;height:50px;border-radius:8px;">
           <div class="ms-2">
@@ -122,3 +122,4 @@ document
       console.error("Erreur réseau :", error);
     }
   });
+
