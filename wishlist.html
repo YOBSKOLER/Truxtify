@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/darkmode.css" />
+    <link rel="stylesheet" href="css/head.css" />
+    <title>Truxtify | Favoris</title>
+    <style>
+      /* 🎨 Style global */
+      body {
+        background-color: #f8f9fa;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      }
+
+      /* Wishlist */
+      .wishlist-section {
+        padding: 50px 20px;
+      }
+
+      .wishlist-title {
+        text-align: center;
+        font-size: 2rem;
+        font-weight: bold;
+        margin-bottom: 30px;
+        color: #004080;
+      }
+
+      .card {
+        border: none;
+        border-radius: 15px;
+        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
+        transition: transform 0.2s ease-in-out;
+      }
+      .card:hover {
+        transform: translateY(-5px);
+      }
+
+      .card img {
+        border-top-left-radius: 15px;
+        border-top-right-radius: 15px;
+        height: 220px;
+        object-fit: cover;
+      }
+
+      .card-body {
+        text-align: center;
+      }
+
+      .card-title {
+        font-size: 1.2rem;
+        font-weight: bold;
+        color: #333;
+      }
+
+      .price {
+        color: #ff6f3c;
+        font-weight: bold;
+        margin: 10px 0;
+      }
+
+      .btn-danger {
+        border-radius: 25px;
+        padding: 6px 15px;
+      }
+
+      .btn-success {
+        border-radius: 25px;
+        padding: 6px 15px;
+        background-color: #228b22;
+        border: none;
+      }
+
+      .empty-message {
+        text-align: center;
+        font-size: 1.2rem;
+        color: #777;
+        margin-top: 50px;
+      }
+    </style>
+  </head>
+  <body>
+    <header class="sticky-top">
+      <div class="logo">
+        <a href="header.html">
+          <strong
+            ><span>TRU<span class="custom-x"></span>TIFY</span></strong
+          >
+        </a>
+      </div>
+      <form class="search-bar d-flex me-3">
+        <input
+          class="form-control"
+          type="search"
+          placeholder="search for products"
+        />
+      </form>
+      <div class="navbar navbar-expand-lg">
+        <ul class="navbar me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" href="index.html">HOME</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="boutique.html">SHOP</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href=".html">CONTACT</a>
+          </li>
+          <!-- Ici, on insère dynamiquement le bouton Connexion ou le menu
+          utilisateur -->
+          <div id="user-menu"></div>
+
+          <!-- Panier -->
+          <a href="cart.html" class="btn btn-warning ms-2">
+            🛒 Panier(<span id="cart-count">0</span>)
+          </a>
+        </ul>
+      </div>
+    </header>
+
+    <!-- 🔹 Section Wishlist -->
+    <section class="wishlist-section container">
+      <h2 class="wishlist-title">Mes Favoris</h2>
+      <div id="wishlist-container" class="row g-4"></div>
+    </section>
+
+    <script>
+      const wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
+      const container = document.getElementById("wishlist-container");
+
+      if (wishlist.length === 0) {
+        container.innerHTML =
+          '<p class="empty-message">Aucun produit en favoris ❤️</p>';
+      } else {
+        wishlist.forEach((product) => {
+          container.innerHTML += `
+            <div class="col-md-3">
+              <div class="card">
+                <img src="${product.img}" class="card-img-top" alt="${product.name}">
+                <div class="card-body">
+                  <h5 class="card-title">${product.name}</h5>
+                  <p class="price">${product.price} FCFA</p>
+                  <button class="btn btn-danger remove-btn" data-id="${product.id}">Retirer</button>
+                  <button class="btn btn-success add-to-cart" 
+                    data-id="${product.id}"
+                    data-name="${product.name}"
+                    data-price="${product.price}"
+                    data-image="${product.img}">
+                    Ajouter au panier
+                  </button>
+                </div>
+              </div>
+            </div>
+          `;
+        });
+      }
+
+      // Suppression d’un produit
+      document.querySelectorAll(".remove-btn").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          const id = btn.dataset.id;
+          const newWishlist = wishlist.filter((p) => p.id !== id);
+          localStorage.setItem("wishlist", JSON.stringify(newWishlist));
+          location.reload();
+        });
+      });
+
+      // Ajouter au panier
+      document.querySelectorAll(".add-to-cart").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          const product = {
+            id: btn.dataset.id,
+            name: btn.dataset.name,
+            price: btn.dataset.price,
+            img: btn.dataset.image,
+          };
+
+          let cart = JSON.parse(localStorage.getItem("cart")) || [];
+          cart.push(product);
+          localStorage.setItem("cart", JSON.stringify(cart));
+          alert("Produit ajouté au panier !");
+        });
+      });
+    </script>
+    <footer class="footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-4">
+            <h5>Truxtify</h5>
+            <p>Votre marketplace moderne et élégante.</p>
+          </div>
+          <div class="col-md-4">
+            <h5>Liens utiles</h5>
+            <ul class="list-unstyled">
+              <li><a href="boutique.html">Boutique</a></li>
+              <li><a href="#">Contact</a></li>
+              <li><a href="#">CGU</a></li>
+              <li><a href="#">Confidentialité</a></li>
+            </ul>
+          </div>
+          <div class="col-md-4">
+            <h5>Suivez-nous</h5>
+            <a href="#">Facebook</a> | <a href="#">Instagram</a> |
+            <a href="#">Twitter</a>
+          </div>
+        </div>
+        <div class="text-center mt-4">
+          <small>&copy; 2025 Truxtify - Tous droits réservés</small>
+        </div>
+      </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/cart.js"></script>
+    <script src="js/header.js"></script>
+    <script src="js/dark-mode.js"></script>
+  </body>
+</html>

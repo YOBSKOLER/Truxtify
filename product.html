@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Truxtify - Détails Produit</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/head.css" />
+    <style>
+      body {
+        background-color: #f5f5f5;
+      }
+      .product-img {
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      }
+      .btn-buy {
+        border-radius: 25px;
+        padding: 10px 25px;
+      }
+      .btn-add-to-cart:hover {
+        background-color: #1e7e1e;
+        color: white;
+        opacity: 0.9;
+      }
+      .review-stars {
+        color: #ffc107;
+      }
+      .tab-btn {
+        flex: 1;
+        padding: 10px 0;
+        font-weight: bold;
+        border: none;
+        background: none;
+        transition: 0.3s ease;
+        border-bottom: 2px solid transparent;
+        cursor: pointer;
+      }
+
+      .tab-btn.active {
+        color: #0d6efd;
+        border-color: #0d6efd;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- HEADER -->
+    <header class="sticky-top">
+      <div class="logo">
+        <a href="header.html">
+          <strong
+            ><span>TRU<span class="custom-x"></span>TIFY</span></strong
+          >
+        </a>
+      </div>
+      <!--<form class="search-bar d-flex me-3">
+        <input
+          class="form-control"
+          type="search"
+          placeholder="search for products"
+        />
+      </form>-->
+      <div class="navbar navbar-expand-lg">
+        <ul class="navbar me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" href="index.html">HOME</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="boutique.html">SHOP</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href=".html">CONTACT</a>
+          </li>
+          <!-- Ici, on insère dynamiquement le bouton Connexion ou le menu
+          utilisateur -->
+          <div id="user-menu"></div>
+
+          <!-- Panier -->
+          <a href="cart.html" class="btn btn-warning ms-2">
+            🛒 Panier(<span id="cart-count">0</span>)
+          </a>
+        </ul>
+      </div>
+    </header>
+
+    <!-- PAGE PRODUIT -->
+    <div class="container my-5">
+      <div class="row g-5">
+        <!-- Image -->
+        <div class="col-md-6 text-center">
+          <img
+            src="photos/OIP.png"
+            class="img-fluid product-img"
+            alt="Produit"
+          />
+        </div>
+
+        <!-- Infos produit -->
+        <div class="col-md-6">
+          <h2 class="fw-bold">Montre Élégante Homme</h2>
+          <p class="review-stars mb-2">
+            ★★★★★ <span class="text-muted fs-6">(32 avis)</span>
+          </p>
+          <h4 class="text-primary fw-bold mb-3">49.99 €</h4>
+
+          <p class="mb-4 text-muted">
+            Cette montre au design minimaliste allie élégance et confort. Conçue
+            avec des matériaux de haute qualité, elle s'adapte aussi bien aux
+            occasions formelles qu’aux tenues décontractées.
+          </p>
+
+          <!-- Options -->
+          <div class="mb-3">
+            <label class="form-label fw-bold">Couleur :</label>
+            <select class="form-select w-50">
+              <option>Noir</option>
+              <option>Argent</option>
+              <option>Or</option>
+            </select>
+          </div>
+
+          <div class="mb-4">
+            <label class="form-label fw-bold">Quantité :</label>
+            <input type="number" value="1" min="1" class="form-control w-25" />
+          </div>
+
+          <!-- Boutons -->
+          <div class="d-flex gap-3">
+            <button
+              class="btn btn-add-to-cart"
+              style="background-color: #228b22; color: white"
+              data-id="1"
+              data-name="Montre Élégante"
+              data-price="10000"
+              data-image="OIP.png"
+            >
+              Ajouter au panier
+            </button>
+
+            <button class="btn btn-outline-dark btn-buy">
+              Acheter maintenant
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Description + Avis -->
+      <div class="mt-5">
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
+          <li class="nav-item" role="presentation">
+            <button
+              class="nav-link active"
+              id="desc-tab"
+              data-bs-toggle="tab"
+              data-bs-target="#desc"
+              type="button"
+            >
+              Description
+            </button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button
+              class="nav-link"
+              id="avis-tab"
+              data-bs-toggle="tab"
+              data-bs-target="#avis"
+              type="button"
+            >
+              Avis (32)
+            </button>
+          </li>
+        </ul>
+        <div
+          class="tab-content p-4 bg-white border border-top-0 rounded-bottom"
+        >
+          <div class="tab-pane fade show active" id="desc">
+            <p>
+              La montre élégante Truxtify combine un mouvement quartz précis
+              avec un bracelet confortable. Étanche jusqu'à 30m, elle est
+              parfaite pour une utilisation quotidienne.
+            </p>
+          </div>
+          <div class="tab-pane fade" id="avis">
+            <div class="mb-3 border-bottom pb-2">
+              <strong>Jean Dupont</strong> ★★★★☆
+              <p>Très belle montre, livraison rapide.</p>
+            </div>
+            <div class="mb-3 border-bottom pb-2">
+              <strong>Marie Claire</strong> ★★★★★
+              <p>Je l'adore, elle va parfaitement avec mes tenues de soirée.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Popup de Connexion -->
+    <div
+      id="popupOverlay"
+      class="d-none position-fixed top-0 start-0 w-100 h-100 bg-dark bg-opacity-75 d-flex justify-content-center align-items-center"
+      style="z-index: 1050; backdrop-filter: blur(3px)"
+    >
+      <div
+        class="bg-white rounded p-4 shadow-lg"
+        style="width: 95%; max-width: 500px; position: relative"
+      >
+        <button
+          onclick="closePopup()"
+          class="btn-close position-absolute top-0 end-0 m-3"
+        ></button>
+
+        <!-- Onglets -->
+        <div class="d-flex border-bottom mb-4">
+          <button
+            id="loginTab"
+            class="tab-btn active"
+            onclick="switchTab('login')"
+          >
+            Connexion
+          </button>
+          <button id="signupTab" class="tab-btn" onclick="switchTab('signup')">
+            Inscription
+          </button>
+        </div>
+
+        <!-- Formulaire Connexion -->
+        <div id="loginForm">
+          <h4 class="mb-3 text-center">Connexion</h4>
+          <input
+            type="email"
+            class="form-control mb-3"
+            placeholder="Adresse email"
+          />
+          <input
+            type="password"
+            class="form-control mb-3"
+            placeholder="Mot de passe"
+          />
+          <button class="btn btn-warning w-100 mb-2">
+            Continuer avec l'email</button
+          > 
+        </div>
+        <!-- Formulaire Inscription -->
+        <div id="signupForm" class="d-none">
+          <h4 class="mb-3 text-center">Inscription</h4>
+          <input
+            type="text"
+            class="form-control mb-3"
+            placeholder="Nom complet"
+          />
+          <input
+            type="email"
+            class="form-control mb-3"
+            placeholder="Adresse email"
+          />
+          <input
+            type="password"
+            class="form-control mb-3"
+            placeholder="Mot de passe"
+          />
+          <select name="role" class="form-select" required>
+            <option value="">Sélectionner un type de compte</option>
+            <option value="client">Client</option>
+            <option value="marchand">Marchand</option>
+          </select>
+
+          <button class="btn btn-success w-100 mb-2">Créer un compte</button>
+        </div>
+
+        <!-- Boutons alternatifs -->
+        <button
+          class="btn btn-light w-100 mb-2 d-flex align-items-center justify-content-center gap-2 border"
+        >
+          <img src="https://img.icons8.com/color/16/google-logo.png" />
+          Continuer avec Google
+        </button>
+        <button
+          class="btn btn-light w-100 mb-3 d-flex align-items-center justify-content-center gap-2 border"
+        >
+          <img src="https://img.icons8.com/ios-filled/16/mac-os.png" />
+          Continuer avec Apple
+        </button>
+      </div>
+    </div>
+    <footer class="footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-4">
+            <h5>Truxtify</h5>
+            <p>Votre marketplace moderne et élégante.</p>
+          </div>
+          <div class="col-md-4">
+            <h5>Liens utiles</h5>
+            <ul class="list-unstyled">
+              <li><a href="boutique.html">Boutique</a></li>
+              <li><a href="#">Contact</a></li>
+              <li><a href="#">CGU</a></li>
+              <li><a href="#">Confidentialité</a></li>
+            </ul>
+          </div>
+          <div class="col-md-4">
+            <h5>Suivez-nous</h5>
+            <a href="#">Facebook</a> | <a href="#">Instagram</a> |
+            <a href="#">Twitter</a>
+          </div>
+        </div>
+        <div class="text-center mt-4">
+          <small>&copy; 2025 Truxtify - Tous droits réservés</small>
+        </div>
+      </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/cart.js"></script>
+    <script src="js/header.js"></script>
+    <script src="js/popup.js"></script>
+  </body>
+</html>
