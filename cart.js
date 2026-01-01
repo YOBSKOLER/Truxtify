@@ -10,7 +10,6 @@ function formatPrice(value) {
   return Number(value).toLocaleString("fr-FR") + " FCFA";
 }
 
-// compteur = nombre de produits distincts
 function updateCartCount() {
   const cart = getCart();
   const desktop = document.getElementById("cart-count");
@@ -19,14 +18,14 @@ function updateCartCount() {
   if (mobile) mobile.textContent = cart.length;
 }
 
-// ajout au panier
+
 function initAddToCart() {
   document.querySelectorAll(".btn-add-to-cart").forEach((button) => {
     button.addEventListener("click", () => {
       const id = button.dataset.id;
       const name = button.dataset.name;
       const price = parseInt(button.dataset.price);
-      const image = button.dataset.image; // ex: "OIP.webp"
+      const image = button.dataset.image; 
 
       let cart = getCart();
       const existing = cart.find((item) => item.id === id);
@@ -63,7 +62,7 @@ function renderCart() {
     cartItems.innerHTML += `
       <div class="cart-item d-flex align-items-center justify-content-between border-bottom pb-3 mb-3">
         <div class="d-flex align-items-center">
-          <img src="photos/${item.image}" alt="${item.name}" class="cart-img" />
+          <img src="${item.image}" alt="${item.name}" class="cart-img" />
           <div class="ms-3">
             <h5>${item.name}</h5>
             <input type="number" value="${item.quantity}" min="1"
@@ -82,7 +81,7 @@ function renderCart() {
     subtotal + shipping
   );
 
-  // mise à jour quantité
+  
   document.querySelectorAll(".quantity").forEach((input) => {
     input.addEventListener("change", () => {
       let cart = getCart();
@@ -93,7 +92,7 @@ function renderCart() {
     });
   });
 
-  // suppression
+  
   document.querySelectorAll(".btn-remove").forEach((btn) => {
     btn.addEventListener("click", () => {
       let cart = getCart();
@@ -110,3 +109,4 @@ document.addEventListener("DOMContentLoaded", () => {
   initAddToCart();
   renderCart();
 });
+
