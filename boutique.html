@@ -12,15 +12,15 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css"
     />
-    <link rel="stylesheet" href="css/boutique.css" />
-    <link rel="stylesheet" href="css/head.css" />
+    <link rel="stylesheet" href="boutique.css" />
+    <link rel="stylesheet" href="head.css" />
     <style></style>
   </head>
   <body>
-    <!-- HEADER -->
+    
     <header class="sticky-top">
       <div class="d-flex align-items-center header-left">
-        <!-- Hamburger left (mobile) -->
+        
         <button
           class="btn btn-link text-white mobile-hamburger d-md-none me-2 p-1"
           type="button"
@@ -66,7 +66,7 @@
         >
           <i class="bi bi-search fs-4"></i>
         </button>
-        <!-- Cart icon (icon-only) -->
+        
         <a href="cart.html" class="cart-icon text-white position-relative me-1">
           <i class="bi bi-cart-fill fs-4"></i>
           <span
@@ -76,12 +76,9 @@
           >
         </a>
 
-        <!-- Ici, on insère dynamiquement le bouton Connexion ou le menu
-      utilisateur -->
         <div id="user-menu" class="profil d-flex d-md-block"></div>
       </div>
     </header>
-    <!-- Mobile search panel (toggle) -->
     <div id="mobile-search-panel" class="mobile-search-panel d-none d-md-none">
       <div class="container py-2">
         <div class="d-flex gap-2">
@@ -97,7 +94,6 @@
         <div id="mobile-search-results" class="mt-2 list-group"></div>
       </div>
     </div>
-    <!-- Offcanvas mobile menu -->
     <div
       class="offcanvas offcanvas-start"
       tabindex="-1"
@@ -131,7 +127,6 @@
         </nav>
       </div>
     </div>
-    <!-- FILTRES HORIZONTAUX -->
     <div class="container my-4">
       <div
         class="filter-bar d-flex flex-wrap gap-3 justify-content-between align-items-center"
@@ -173,10 +168,8 @@
         </div>
       </div>
     </div>
-    <!-- PRODUITS -->
     <div class="container my-5">
       <div class="row g-4">
-        <!-- Exemple Produit -->
         <div class="col-md-3 col-6">
           <div
             class="card product-card"
@@ -218,7 +211,6 @@
           </div>
         </div>
 
-        <!-- Produit 2 -->
         <div class="col-md-3 col-6">
           <div
             class="card product-card"
@@ -259,7 +251,6 @@
           </div>
         </div>
 
-        <!-- Produit 3 -->
         <div class="col-md-3 col-6">
           <div
             class="card product-card"
@@ -340,8 +331,6 @@
         </div>
       </div>
     </div>
-
-    <!-- Popup de Connexion -->
     <div
       id="popupOverlay"
       class="d-none position-fixed top-0 start-0 w-100 h-100 bg-dark bg-opacity-75 d-flex justify-content-center align-items-center"
@@ -370,7 +359,6 @@
           </button>
         </div>
 
-        <!-- Formulaire Connexion -->
         <div id="loginForm">
           <h4 class="mb-3 text-center">Connexion</h4>
           <input
@@ -388,7 +376,6 @@
           </button>
               
         </div>
-        <!-- Formulaire Inscription -->
         <div id="signupForm" class="d-none">
           <h4 class="mb-3 text-center">Inscription</h4>
           <input
@@ -415,7 +402,6 @@
           <button class="btn btn-success w-100 mb-2">Créer un compte</button>
         </div>
 
-        <!-- Boutons alternatifs -->
         <button
           class="btn btn-light w-100 mb-2 d-flex align-items-center justify-content-center gap-2 border"
         >
@@ -459,7 +445,6 @@
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-      // Filters for boutique page
       (function () {
         const category = document.getElementById("filter-category");
         const price = document.getElementById("filter-price");
@@ -496,7 +481,6 @@
             colEl.style.display = visible ? "" : "none";
           });
 
-          // sorting: collect visible items
           if (sortVal && sortVal.startsWith("prix")) {
             const visible = items.filter((i) => i.style.display !== "none");
             visible.sort((a, b) => {
@@ -508,7 +492,7 @@
               );
               return sortVal === "prix-asc" ? pa - pb : pb - pa;
             });
-            // reappend in order
+           
             visible.forEach((node) => row.appendChild(node));
           }
         }
@@ -524,7 +508,6 @@
       );
     </script>
 
-    <!-- Empêcher Ctrl+U et F12 -->
     <script>
       document.onkeydown = function (e) {
         if (e.ctrlKey && (e.key === "u" || e.key === "U" || e.key === "s"))
@@ -532,12 +515,12 @@
         if (e.key === "F12") return false;
       };
     </script>
-    <!-- Dans TOUTES les pages -->
-    <script src="js/"></script>
-    <script src="js/header.js"></script>
-    <script src="js/popup.js"></script>
-    <script src="js/cart.js" defer></script>
-    <script src="js/wishlist.js"></script>
-    <script src="js/dark-mode.js"></script>
+    <script src=""></script>
+    <script src="header.js"></script>
+    <script src="popup.js"></script>
+    <script src="cart.js" defer></script>
+    <script src="wishlist.js"></script>
+    <script src="dark-mode.js"></script>
   </body>
 </html>
+
