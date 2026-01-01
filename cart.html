@@ -11,13 +11,12 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css"
     />
-    <!-- Swiper CSS pour le carousel responsive -->
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
     />
-    <link rel="stylesheet" href="css/header.css" />
-    <link rel="stylesheet" href="css/head.css" />
+    <link rel="stylesheet" href="header.css" />
+    <link rel="stylesheet" href="head.css" />
     <title>cart||Truxtify</title>
     <style>
       body {
@@ -75,7 +74,6 @@
   <body>
     <header class="sticky-top">
       <div class="d-flex align-items-center header-left">
-        <!-- Hamburger left (mobile) -->
         <button
           class="btn btn-link text-white mobile-hamburger d-md-none me-2 p-1"
           type="button"
@@ -122,7 +120,6 @@
         >
           <i class="bi bi-search fs-4"></i>
         </button>
-        <!-- Cart icon (icon-only) -->
         <a
           href="cart.html"
           class="cart-icon text-white position-relative me-1 active"
@@ -135,11 +132,9 @@
           >
         </a>
 
-        <!--<div id="user-menu" class="profil d-flex d-md-block"></div>-->
       </div>
     </header>
 
-    <!-- Mobile search panel (toggle) -->
     <div id="mobile-search-panel" class="mobile-search-panel d-none d-md-none">
       <div class="container py-2">
         <div class="d-flex gap-2">
@@ -156,7 +151,6 @@
       </div>
     </div>
 
-    <!-- Offcanvas mobile menu -->
     <div
       class="offcanvas offcanvas-start"
       tabindex="-1"
@@ -193,11 +187,9 @@
 
     <h1><strong>Mon Panier</strong></h1>
 
-    <!-- Panier -->
     <div class="cart-container row">
       <div class="col-md-8" id="cart-items"></div>
 
-      <!-- Résumé panier -->
       <div class="col-md-4 cart-summary">
         <h4>Résumé</h4>
         <p>Sous-total : <span class="float-end" id="subtotal">0 FCFA</span></p>
@@ -212,7 +204,6 @@
       </div>
     </div>
 
-    <!-- Footer -->
     <footer class="footer">
       <div class="container">
         <div class="row">
@@ -242,8 +233,9 @@
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="js/cart.js"></script>
-    <script src="js/header.js"></script>
-    <script src="js/dark-mode.js"></script>
+    <script src="cart.js"></script>
+    <script src="header.js"></script>
+    <script src="dark-mode.js"></script>
   </body>
 </html>
+
