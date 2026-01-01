@@ -3,58 +3,139 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" type="image/png" sizes="40x40" href="logo.png" />
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
       rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css"
     />
     <!-- Swiper CSS pour le carousel responsive -->
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
     />
-    <link rel="stylesheet" href="header.css" />
-    <link rel="stylesheet" href="head.css" />
+    <link rel="stylesheet" href="css/header.css" />
+    <link rel="stylesheet" href="css/head.css" />
     <title>Accueil||Truxtify</title>
   </head>
   <body>
     <header class="sticky-top">
-      <div class="logo">
-        <a href="header.html">
-          <strong
-            ><span>TRU<span class="custom-x"></span>TIFY</span></strong
+      <div class="d-flex align-items-center header-left">
+        <!-- Hamburger left (mobile) -->
+        <button
+          class="btn btn-link text-white mobile-hamburger d-md-none me-2 p-1"
+          type="button"
+          data-bs-toggle="offcanvas"
+          data-bs-target="#mobileOffcanvas"
+          aria-controls="mobileOffcanvas"
+        >
+          <i class="bi bi-list fs-3"></i>
+        </button>
+
+        <div class="logo">
+          <a href="header.html"
+            ><strong
+              ><span>TRU<span class="custom-x"></span>TIFY</span></strong
+            ></a
           >
-        </a>
+        </div>
       </div>
+
       <form class="search-bar d-flex me-3">
         <input
-          class="form-control"
+          class="form-control d-none d-md-block"
           type="search"
           placeholder="search for products"
         />
       </form>
-      <div class="navbar navbar-expand-lg">
-        <ul class="navbar me-auto mb-2 mb-lg-0">
+      <div class="navbar navbar-expand-ig">
+        <ul class="navbar me-auto mb-2 mb-ig-0">
           <li class="nav-item">
             <a class="nav-link active" href="index.html">HOME</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="boutique.html">SHOP</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href=".html">CONTACT</a>
-          </li>
-          <!-- Ici, on insère dynamiquement le bouton Connexion ou le menu
-          utilisateur -->
-          <div id="user-menu"></div>
-
-          <!-- Panier -->
-          <a href="cart.html" class="btn btn-warning ms-2">
-            🛒 Panier(<span id="cart-count">0</span>)
-          </a>
+          <li class="nav-item"><a class="nav-link" href=".html">CONTACT</a></li>
         </ul>
       </div>
+
+      <div class="d-flex align-items-center gap-2 ms-2">
+        <button
+          class="btn btn-link text-white d-md-none mobile-search-toggle p-1 me-1"
+          type="button"
+          aria-label="Rechercher"
+        >
+          <i class="bi bi-search fs-4"></i>
+        </button>
+        <!-- Cart icon (icon-only) -->
+        <a href="cart.html" class="cart-icon text-white position-relative me-1">
+          <i class="bi bi-cart-fill fs-4"></i>
+          <span
+            id="cart-count"
+            class="cart-badge position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
+            >0</span
+          >
+        </a>
+
+        <div id="user-menu" class="profil d-flex d-md-block"></div>
+      </div>
     </header>
+
+    <!-- Mobile search panel (toggle) -->
+    <div id="mobile-search-panel" class="mobile-search-panel d-none d-md-none">
+      <div class="container py-2">
+        <div class="d-flex gap-2">
+          <input
+            id="mobile-search-input"
+            class="form-control"
+            type="search"
+            placeholder="Rechercher des produits..."
+          />
+          <button id="mobile-search-btn" class="btn btn-primary">search</button>
+          <button id="mobile-search-close" class="btn btn-light">✕</button>
+        </div>
+        <div id="mobile-search-results" class="mt-2 list-group"></div>
+      </div>
+    </div>
+
+    <!-- Offcanvas mobile menu -->
+    <div
+      class="offcanvas offcanvas-start"
+      tabindex="-1"
+      id="mobileOffcanvas"
+      aria-labelledby="mobileOffcanvasLabel"
+    >
+      <div class="offcanvas-header">
+        <button
+          type="button"
+          class="btn-close text-reset"
+          data-bs-dismiss="offcanvas"
+          aria-label="Close"
+        ></button>
+      </div>
+      <h5 class="offcanvas-title" style="font-weight: bold; display: flex">
+        Menu
+      </h5>
+      <div class="offcanvas-body">
+        <nav>
+          <ul class="list-unstyled">
+            <li class="mb-2">
+              <a class="text-decoration-none" href="index.html">HOME</a>
+            </li>
+            <li class="mb-2">
+              <a class="text-decoration-none" href="boutique.html">SHOP</a>
+            </li>
+            <li class="mb-2">
+              <a class="text-decoration-none" href=".html">CONTACT</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+
     <div class="hero">
       <div
         id="heroCarousel"
@@ -99,25 +180,17 @@
             </div>
           </div>
           <div class="carousel-item h-100">
-            <img
-              src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80"
-              class="hero-carousel-media"
-              alt="Photo 1"
-            />
+            <img src="photos/hero1.png" class="hero-img" alt="Flyer Truxtify" />
             <div class="carousel-caption d-none d-md-block">
-              <h1>Photo 1</h1>
-              <p>Description photo 1</p>
+              <h1></h1>
+              <p></p>
             </div>
           </div>
           <div class="carousel-item h-100">
-            <img
-              src="https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=800&q=80"
-              class="hero-carousel-media"
-              alt="Photo 2"
-            />
+            <img src="photos/hero2.png" class="hero-img" alt="Flyer Truxtify" />
             <div class="carousel-caption d-none d-md-block">
-              <h1>Photo 2</h1>
-              <p>Description photo 2</p>
+              <h1></h1>
+              <p></p>
             </div>
           </div>
         </div>
@@ -300,19 +373,19 @@
       <div class="container">
         <h2 class="text-center mb-4">Produits phares</h2>
         <div class="row g-4">
-          <div class="col-md-3">
+          <div class="col-md-3 col-6">
             <div class="card product-card shadow-sm">
               <span
                 class="wishlist-icon"
                 data-id="1"
                 data-name="Montre Élégante"
                 data-price="15000"
-                data-image="OIP.png"
+                data-image="photos/OIP.png"
                 >♡</span
               >
               <a href="product.html"
                 ><img
-                  src="OIP.png"
+                  src="photos/OIP.png"
                   class="card-img-top"
                   alt="Produit 1"
                 />
@@ -335,19 +408,19 @@
               </div>
             </div>
           </div>
-          <div class="col-md-3">
+          <div class="col-md-3 col-6">
             <div class="card product-card shadow-sm">
               <span
                 class="wishlist-icon"
                 data-id="5"
                 data-name="New Balance"
                 data-price="15000"
-                data-image="IMG-20250818-WA0009.jpg"
+                data-image="photos/IMG-20250818-WA0005.jpg"
                 >♡</span
               >
               <a href="product.html"
                 ><img
-                  src="IMG-20250818-WA0009.jpg"
+                  src="photos/IMG-20250818-WA0005.jpeg"
                   class="card-img-top"
                   alt="Produit 5"
               /></a>
@@ -362,26 +435,26 @@
                   data-id="5"
                   data-name="New Balance"
                   data-price="15000"
-                  data-image="IMG-20250818-WA0009.jpg"
+                  data-image="IMG-20250818-WA0005.jpg"
                 >
                   Ajouter au panier
                 </button>
               </div>
             </div>
           </div>
-          <div class="col-md-3">
+          <div class="col-md-3 col-6">
             <div class="card product-card shadow-sm">
               <span
                 class="wishlist-icon"
                 data-id="6"
                 data-name="Pair Homme"
                 data-price="30000"
-                data-image="IMG-20250818-WA0008.jpg"
+                data-image="photos/IMG-20250818-WA0008.jpg"
                 >♡</span
               >
               <a href="product.html"
                 ><img
-                  src="IMG-20250818-WA0008.jpg"
+                  src="photos/IMG-20250818-WA0008.jpg"
                   class="card-img-top"
                   alt="Produit 3"
               /></a>
@@ -403,19 +476,19 @@
               </div>
             </div>
           </div>
-          <div class="col-md-3">
+          <div class="col-md-3 col-6">
             <div class="card product-card shadow-sm">
               <span
                 class="wishlist-icon"
                 data-id="3"
                 data-name="Jordan 4"
                 data-price="30000"
-                data-image="jordan4.jpeg"
+                data-image="photos/jordan4.jpeg"
                 >♡</span
               >
               <a href="product.html"
                 ><img
-                  src="jordan4.jpeg"
+                  src="photos/jordan4.jpeg"
                   class="card-img-top"
                   alt="Produit 4"
               /></a>
@@ -437,340 +510,350 @@
               </div>
             </div>
           </div>
-          <div class="col-md-3">
+          <!-- Ajout : 10 nouveaux produits -->
+          <div class="col-md-3 col-6">
             <div class="card product-card shadow-sm">
               <span
                 class="wishlist-icon"
-                data-id="3"
-                data-name="Jordan 4"
-                data-price="30000"
-                data-image="jordan4.jpeg"
+                data-id="20"
+                data-name="Casquette Street"
+                data-price="5000"
+                data-image="photos/casquette.webp"
                 >♡</span
               >
               <a href="product.html"
                 ><img
-                  src="jordan4.jpeg"
+                  src="photos/casquette.webp"
                   class="card-img-top"
-                  alt="Produit 4"
+                  alt="Casquette Street"
               /></a>
               <div class="card-body text-center">
-                <h5 class="card-title">Jordan 4</h5>
-                <p class="text-muted">10.000 FCFA</p>
+                <h5 class="card-title">Casquette Street</h5>
+                <p class="text-muted">5.000 FCFA</p>
                 <a href="product.html" class="btn btn-sm btn-details"
                   >Voir détails</a
                 >
                 <button
                   class="btn btn-add-to-cart"
-                  data-id="3"
-                  data-name="Jordan 4"
-                  data-price="30000"
-                  data-image="jordan4.jpeg"
+                  data-id="20"
+                  data-name="Casquette Street"
+                  data-price="5000"
+                  data-image="Casquette.webp"
                 >
                   Ajouter au panier
                 </button>
               </div>
             </div>
           </div>
-          <div class="col-md-3">
+
+          <div class="col-md-3 col-6">
             <div class="card product-card shadow-sm">
               <span
                 class="wishlist-icon"
-                data-id="3"
-                data-name="Jordan 4"
-                data-price="30000"
-                data-image="jordan4.jpeg"
+                data-id="21"
+                data-name="T-shirt Oversize"
+                data-price="7000"
+                data-image="photos/t-shirt.jpeg"
                 >♡</span
               >
               <a href="product.html"
                 ><img
-                  src="jordan4.jpeg"
+                  src="photos/t-shirt.jpeg"
                   class="card-img-top"
-                  alt="Produit 4"
+                  alt="T-shirt Basique"
               /></a>
               <div class="card-body text-center">
-                <h5 class="card-title">Jordan 4</h5>
-                <p class="text-muted">10.000 FCFA</p>
+                <h5 class="card-title">T-shirt Oversize</h5>
+                <p class="text-muted">7.000 FCFA</p>
                 <a href="product.html" class="btn btn-sm btn-details"
                   >Voir détails</a
                 >
                 <button
                   class="btn btn-add-to-cart"
-                  data-id="3"
-                  data-name="Jordan 4"
-                  data-price="30000"
-                  data-image="jordan4.jpeg"
+                  data-id="21"
+                  data-name="T-shirt Basique"
+                  data-price="7000"
+                  data-image="tshirt21.jpg"
                 >
                   Ajouter au panier
                 </button>
               </div>
             </div>
           </div>
-          <div class="col-md-3">
+
+          <div class="col-md-3 col-6">
             <div class="card product-card shadow-sm">
               <span
                 class="wishlist-icon"
-                data-id="3"
-                data-name="Jordan 4"
-                data-price="30000"
-                data-image="jordan4.jpeg"
+                data-id="22"
+                data-name="jersey"
+                data-price="15000"
+                data-image="photos/jersey.jpeg"
                 >♡</span
               >
               <a href="product.html"
                 ><img
-                  src="jordan4.jpeg"
+                  src="photos/jersey.jpeg"
                   class="card-img-top"
-                  alt="Produit 4"
+                  alt="Short Sport"
               /></a>
               <div class="card-body text-center">
-                <h5 class="card-title">Jordan 4</h5>
-                <p class="text-muted">10.000 FCFA</p>
+                <h5 class="card-title">Jersey</h5>
+                <p class="text-muted">15.000 FCFA</p>
                 <a href="product.html" class="btn btn-sm btn-details"
                   >Voir détails</a
                 >
                 <button
                   class="btn btn-add-to-cart"
-                  data-id="3"
-                  data-name="Jordan 4"
-                  data-price="30000"
-                  data-image="jordan4.jpeg"
+                  data-id="22"
+                  data-name="Short Sport"
+                  data-price="15000"
+                  data-image="jersey.jpeg"
                 >
                   Ajouter au panier
                 </button>
               </div>
             </div>
           </div>
-          <div class="col-md-3">
+
+          <div class="col-md-3 col-6">
             <div class="card product-card shadow-sm">
               <span
                 class="wishlist-icon"
-                data-id="3"
-                data-name="Jordan 4"
+                data-id="23"
+                data-name="Timber-Land"
                 data-price="30000"
-                data-image="jordan4.jpeg"
+                data-image="photos/Timber land.jpeg"
                 >♡</span
               >
               <a href="product.html"
                 ><img
-                  src="jordan4.jpeg"
+                  src="photos/Timber land.jpeg"
                   class="card-img-top"
-                  alt="Produit 4"
+                  alt="Sweat Zippé"
               /></a>
               <div class="card-body text-center">
-                <h5 class="card-title">Jordan 4</h5>
-                <p class="text-muted">10.000 FCFA</p>
+                <h5 class="card-title">Timber-Land</h5>
+                <p class="text-muted">30.000 FCFA</p>
                 <a href="product.html" class="btn btn-sm btn-details"
                   >Voir détails</a
                 >
                 <button
                   class="btn btn-add-to-cart"
-                  data-id="3"
-                  data-name="Jordan 4"
+                  data-id="23"
+                  data-name="Timber-Land"
                   data-price="30000"
-                  data-image="jordan4.jpeg"
+                  data-image="Timber land.jpeg"
                 >
                   Ajouter au panier
                 </button>
               </div>
             </div>
           </div>
-          <div class="col-md-3">
+
+          <div class="col-md-3 col-6">
             <div class="card product-card shadow-sm">
               <span
                 class="wishlist-icon"
-                data-id="3"
-                data-name="Jordan 4"
-                data-price="30000"
-                data-image="jordan4.jpeg"
+                data-id="24"
+                data-name="Iphone 13"
+                data-price="200000"
+                data-image="photos/iphone.webp"
                 >♡</span
               >
               <a href="product.html"
                 ><img
-                  src="jordan4.jpeg"
+                  src="photos/iphone.webp"
                   class="card-img-top"
-                  alt="Produit 4"
+                  alt="Iphone 13"
               /></a>
               <div class="card-body text-center">
-                <h5 class="card-title">Jordan 4</h5>
-                <p class="text-muted">10.000 FCFA</p>
+                <h5 class="card-title">Iphone 13</h5>
+                <p class="text-muted">200.000</p>
                 <a href="product.html" class="btn btn-sm btn-details"
                   >Voir détails</a
                 >
                 <button
                   class="btn btn-add-to-cart"
-                  data-id="3"
-                  data-name="Jordan 4"
-                  data-price="30000"
-                  data-image="jordan4.jpeg"
+                  data-id="24"
+                  data-name="Sandales Plage"
+                  data-price="200000"
+                  data-image="iphone.webp"
                 >
                   Ajouter au panier
                 </button>
               </div>
             </div>
           </div>
-          <div class="col-md-3">
+
+          <div class="col-md-3 col-6">
             <div class="card product-card shadow-sm">
               <span
                 class="wishlist-icon"
-                data-id="3"
-                data-name="Jordan 4"
-                data-price="30000"
-                data-image="jordan4.jpeg"
+                data-id="25"
+                data-name="Ceinture Cuir"
+                data-price="8000"
+                data-image="photos/ceinture.webp"
                 >♡</span
               >
               <a href="product.html"
                 ><img
-                  src="jordan4.jpeg"
+                  src="photos/ceinture.webp"
                   class="card-img-top"
-                  alt="Produit 4"
+                  alt="Ceinture Cuir"
               /></a>
               <div class="card-body text-center">
-                <h5 class="card-title">Jordan 4</h5>
-                <p class="text-muted">10.000 FCFA</p>
+                <h5 class="card-title">Ceinture Cuir</h5>
+                <p class="text-muted">8.000 FCFA</p>
                 <a href="product.html" class="btn btn-sm btn-details"
                   >Voir détails</a
                 >
                 <button
                   class="btn btn-add-to-cart"
-                  data-id="3"
-                  data-name="Jordan 4"
-                  data-price="30000"
-                  data-image="jordan4.jpeg"
+                  data-id="25"
+                  data-name="Ceinture Cuir"
+                  data-price="8000"
+                  data-image="ceinture.webp"
                 >
                   Ajouter au panier
                 </button>
               </div>
             </div>
           </div>
-          <div class="col-md-3">
+
+          <div class="col-md-3 col-6">
             <div class="card product-card shadow-sm">
               <span
                 class="wishlist-icon"
-                data-id="3"
-                data-name="Jordan 4"
-                data-price="30000"
-                data-image="jordan4.jpeg"
+                data-id="26"
+                data-name="Play Station Ps5"
+                data-price="3000"
+                data-image="photos/ps5.webp"
                 >♡</span
               >
               <a href="product.html"
                 ><img
-                  src="jordan4.jpeg"
+                  src="photos/ps5.webp"
                   class="card-img-top"
-                  alt="Produit 4"
+                  alt="Play Station Ps5"
               /></a>
               <div class="card-body text-center">
-                <h5 class="card-title">Jordan 4</h5>
-                <p class="text-muted">10.000 FCFA</p>
+                <h5 class="card-title">Play Station Ps5</h5>
+                <p class="text-muted">600 000 FCFA</p>
                 <a href="product.html" class="btn btn-sm btn-details"
                   >Voir détails</a
                 >
                 <button
                   class="btn btn-add-to-cart"
-                  data-id="3"
-                  data-name="Jordan 4"
-                  data-price="30000"
-                  data-image="jordan4.jpeg"
+                  data-id="26"
+                  data-name="Play Station Ps5"
+                  data-price="600000"
+                  data-image="ps5.webp"
                 >
                   Ajouter au panier
                 </button>
               </div>
             </div>
           </div>
-          <div class="col-md-3">
+
+          <div class="col-md-3 col-6">
             <div class="card product-card shadow-sm">
               <span
                 class="wishlist-icon"
-                data-id="3"
-                data-name="Jordan 4"
-                data-price="30000"
-                data-image="jordan4.jpeg"
+                data-id="27"
+                data-name="Baskets Mode"
+                data-price="8000"
+                data-image="photos/Basket.webp"
                 >♡</span
               >
               <a href="product.html"
                 ><img
-                  src="jordan4.jpeg"
+                  src="photos/Basket.webp"
                   class="card-img-top"
-                  alt="Produit 4"
+                  alt="Baskets Mode"
               /></a>
               <div class="card-body text-center">
-                <h5 class="card-title">Jordan 4</h5>
-                <p class="text-muted">10.000 FCFA</p>
+                <h5 class="card-title">Baskets Mode</h5>
+                <p class="text-muted">8.000 FCFA</p>
                 <a href="product.html" class="btn btn-sm btn-details"
                   >Voir détails</a
                 >
                 <button
                   class="btn btn-add-to-cart"
-                  data-id="3"
-                  data-name="Jordan 4"
-                  data-price="30000"
-                  data-image="jordan4.jpeg"
+                  data-id="27"
+                  data-name="Baskets Mode"
+                  data-price="8000"
+                  data-image="Basket.webp"
                 >
                   Ajouter au panier
                 </button>
               </div>
             </div>
           </div>
-          <div class="col-md-3">
+
+          <div class="col-md-3 col-6">
             <div class="card product-card shadow-sm">
               <span
                 class="wishlist-icon"
-                data-id="3"
-                data-name="Jordan 4"
-                data-price="30000"
-                data-image="jordan4.jpeg"
+                data-id="28"
+                data-name="Quater zip"
+                data-price="8000"
+                data-image="photos/Quater.webp"
                 >♡</span
               >
               <a href="product.html"
                 ><img
-                  src="jordan4.jpeg"
+                  src="photos/Quater.webp"
                   class="card-img-top"
-                  alt="Produit 4"
+                  alt="Quater Zip"
               /></a>
               <div class="card-body text-center">
-                <h5 class="card-title">Jordan 4</h5>
-                <p class="text-muted">10.000 FCFA</p>
+                <h5 class="card-title">Quater Zip</h5>
+                <p class="text-muted">8.000 FCFA</p>
                 <a href="product.html" class="btn btn-sm btn-details"
                   >Voir détails</a
                 >
                 <button
                   class="btn btn-add-to-cart"
-                  data-id="3"
-                  data-name="Jordan 4"
-                  data-price="30000"
-                  data-image="jordan4.jpeg"
+                  data-id="28"
+                  data-name="Quater Zip"
+                  data-price="8000"
+                  data-image="Quater.webp"
                 >
                   Ajouter au panier
                 </button>
               </div>
             </div>
           </div>
-          <div class="col-md-3">
+
+          <div class="col-md-3 col-6">
             <div class="card product-card shadow-sm">
               <span
                 class="wishlist-icon"
-                data-id="3"
-                data-name="Jordan 4"
-                data-price="30000"
-                data-image="jordan4.jpeg"
+                data-id="29"
+                data-name="Montre Classique"
+                data-price="32000"
+                data-image="photos/montre29.webp"
                 >♡</span
               >
               <a href="product.html"
                 ><img
-                  src="jordan4.jpeg"
+                  src="photos/montre29.webp"
                   class="card-img-top"
-                  alt="Produit 4"
+                  alt="Montre Classique"
               /></a>
               <div class="card-body text-center">
-                <h5 class="card-title">Jordan 4</h5>
-                <p class="text-muted">10.000 FCFA</p>
+                <h5 class="card-title">Montre Classique</h5>
+                <p class="text-muted">32.000 FCFA</p>
                 <a href="product.html" class="btn btn-sm btn-details"
                   >Voir détails</a
                 >
                 <button
                   class="btn btn-add-to-cart"
-                  data-id="3"
-                  data-name="Jordan 4"
-                  data-price="30000"
-                  data-image="jordan4.jpeg"
+                  data-id="29"
+                  data-name="Montre Classique"
+                  data-price="32000"
+                  data-image="montre29.webp"
                 >
                   Ajouter au panier
                 </button>
@@ -907,7 +990,10 @@
           </div>
         </div>
         <div class="text-center mt-4">
-          <small>&copy; 2025 Truxtify - Tous droits réservés</small>
+          <small
+            >&copy; 2026 Truxtify - Tous droits réservés Toute reproduction est
+            interdite sans autorisation.
+          </small>
         </div>
       </div>
     </footer>
@@ -917,39 +1003,39 @@
   <!-- Swiper JS pour le carousel responsive -->
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
   <script>
-    var swiper = new Swiper(".categories-swiper", {
-      slidesPerView: 5,
+    const categoriesSwiper = new Swiper(".categories-swiper", {
+      slidesPerView: 4,
       spaceBetween: 20,
+      loop: true,
+
+      autoplay: {
+        delay: 2500,
+        disableOnInteraction: false,
+      },
+
       navigation: {
         nextEl: ".swiper-button-next",
         prevEl: ".swiper-button-prev",
       },
-      pagination: {
-        el: ".swiper-pagination",
-        clickable: true,
-      },
+
       breakpoints: {
-        0: {
+        320: {
           slidesPerView: 2,
         },
         768: {
           slidesPerView: 3,
         },
-        992: {
-          slidesPerView: 5,
+        1024: {
+          slidesPerView: 4,
         },
       },
     });
   </script>
-  <script src="cart.js"></script>
-  <script src="popup.js"></script>
-  <script src="header.js"></script>
-  <script src="wishlist.js"></script>
-  <script src="dark-mode.js"></script>
+
+  <script src="js/cart.js"></script>
+  <script src="js/popup.js"></script>
+  <script src="js/header.js"></script>
+  <script src="js/wishlist.js"></script>
+  <script src="js/dark-mode.js"></script>
+  <script src="js/security.js"></script>
 </html>
-
-
-
-
-
-
