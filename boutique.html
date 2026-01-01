@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -8,24 +8,39 @@
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="darkmode.css" />
-    <link rel="stylesheet" href="boutique.css" />
-    <link rel="stylesheet" href="head.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css"
+    />
+    <link rel="stylesheet" href="css/boutique.css" />
+    <link rel="stylesheet" href="css/head.css" />
     <style></style>
   </head>
   <body>
     <!-- HEADER -->
     <header class="sticky-top">
-      <div class="logo">
-        <a href="header.html">
-          <strong
-            ><span>TRU<span class="custom-x"></span>TIFY</span></strong
-          >
-        </a>
+      <div class="d-flex align-items-center header-left">
+        <!-- Hamburger left (mobile) -->
+        <button
+          class="btn btn-link text-white mobile-hamburger d-md-none me-2 p-1"
+          type="button"
+          data-bs-toggle="offcanvas"
+          data-bs-target="#mobileOffcanvas"
+          aria-controls="mobileOffcanvas"
+        >
+          <i class="bi bi-list fs-3"></i>
+        </button>
+        <div class="logo">
+          <a href="header.html">
+            <strong
+              ><span>TRU<span class="custom-x"></span>TIFY</span></strong
+            >
+          </a>
+        </div>
       </div>
-      <form class="search-bar d-flex me-3">
+      <form class="search-bar d-none d-md-flex me-3">
         <input
-          class="form-control"
+          class="form-control d-none d-md-block"
           type="search"
           placeholder="search for products"
         />
@@ -41,26 +56,89 @@
           <li class="nav-item">
             <a class="nav-link" href="">CONTACT</a>
           </li>
-          <!-- Ici, on insère dynamiquement le bouton Connexion ou le menu
-          utilisateur -->
-          <div id="user-menu"></div>
-
-          <!-- Panier -->
-          <a href="cart.html" class="btn btn-warning ms-2">
-            🛒 Panier(<span id="cart-count">0</span>)
-          </a>
         </ul>
       </div>
-    </header>
+      <div class="d-flex align-items-center gap-2 ms-2">
+        <button
+          class="btn btn-link text-white d-md-none mobile-search-toggle p-1 me-1"
+          type="button"
+          aria-label="Rechercher"
+        >
+          <i class="bi bi-search fs-4"></i>
+        </button>
+        <!-- Cart icon (icon-only) -->
+        <a href="cart.html" class="cart-icon text-white position-relative me-1">
+          <i class="bi bi-cart-fill fs-4"></i>
+          <span
+            id="cart-count"
+            class="cart-badge position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
+            >0</span
+          >
+        </a>
 
+        <!-- Ici, on insère dynamiquement le bouton Connexion ou le menu
+      utilisateur -->
+        <div id="user-menu" class="profil d-flex d-md-block"></div>
+      </div>
+    </header>
+    <!-- Mobile search panel (toggle) -->
+    <div id="mobile-search-panel" class="mobile-search-panel d-none d-md-none">
+      <div class="container py-2">
+        <div class="d-flex gap-2">
+          <input
+            id="mobile-search-input"
+            class="form-control"
+            type="search"
+            placeholder="Rechercher des produits..."
+          />
+          <button id="mobile-search-btn" class="btn btn-primary">search</button>
+          <button id="mobile-search-close" class="btn btn-light">✕</button>
+        </div>
+        <div id="mobile-search-results" class="mt-2 list-group"></div>
+      </div>
+    </div>
+    <!-- Offcanvas mobile menu -->
+    <div
+      class="offcanvas offcanvas-start"
+      tabindex="-1"
+      id="mobileOffcanvas"
+      aria-labelledby="mobileOffcanvasLabel"
+    >
+      <div class="offcanvas-header">
+        <button
+          type="button"
+          class="btn-close text-reset"
+          data-bs-dismiss="offcanvas"
+          aria-label="Close"
+        ></button>
+      </div>
+      <h5 class="offcanvas-title" style="font-weight: bold; display: flex">
+        Menu
+      </h5>
+      <div class="offcanvas-body">
+        <nav>
+          <ul class="list-unstyled">
+            <li class="mb-2">
+              <a class="text-decoration-none" href="index.html">HOME</a>
+            </li>
+            <li class="mb-2">
+              <a class="text-decoration-none" href="boutique.html">SHOP</a>
+            </li>
+            <li class="mb-2">
+              <a class="text-decoration-none" href=".html">CONTACT</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </div>
     <!-- FILTRES HORIZONTAUX -->
     <div class="container my-4">
       <div
         class="filter-bar d-flex flex-wrap gap-3 justify-content-between align-items-center"
       >
         <div>
-          <select class="form-select">
-            <option selected>Catégorie</option>
+          <select id="filter-category" class="form-select">
+            <option value="">Toutes catégories</option>
             <option value="vetements">Vêtements</option>
             <option value="bijoux">Bijoux</option>
             <option value="chaussures">Chaussures</option>
@@ -68,16 +146,16 @@
           </select>
         </div>
         <div>
-          <select class="form-select">
-            <option selected>Prix</option>
-            <option value="0-50">0 - 50€</option>
-            <option value="50-100">50 - 100€</option>
-            <option value="100-200">100 - 200€</option>
+          <select id="filter-price" class="form-select">
+            <option value="">Tous les prix</option>
+            <option value="0-5000">0 - 5 000 FCFA</option>
+            <option value="5001-10000">5 001 - 10 000 FCFA</option>
+            <option value="10001-20000">10 001 - 20 000 FCFA</option>
           </select>
         </div>
         <div>
-          <select class="form-select">
-            <option selected>Couleur</option>
+          <select id="filter-color" class="form-select">
+            <option value="">Toutes couleurs</option>
             <option value="noir">Noir</option>
             <option value="blanc">Blanc</option>
             <option value="bleu">Bleu</option>
@@ -85,8 +163,8 @@
           </select>
         </div>
         <div>
-          <select class="form-select">
-            <option selected>Trier par</option>
+          <select id="filter-sort" class="form-select">
+            <option value="">Trier</option>
             <option value="populaire">Populaire</option>
             <option value="nouveaux">Nouveautés</option>
             <option value="prix-asc">Prix croissant</option>
@@ -95,24 +173,28 @@
         </div>
       </div>
     </div>
-
     <!-- PRODUITS -->
     <div class="container my-5">
       <div class="row g-4">
         <!-- Exemple Produit -->
         <div class="col-md-3 col-6">
-          <div class="card product-card">
+          <div
+            class="card product-card"
+            data-category="accessoires"
+            data-price="15000"
+            data-color="noir"
+          >
             <span
               class="wishlist-icon"
               data-id="1"
               data-name="Montre Élégante"
               data-price="15000"
-              data-image="OIP.webp"
+              data-image="photos/OIP.webp"
               >♡</span
             >
             <a href="product.html">
               <img
-                src="OIP.png"
+                src="photos/OIP.png"
                 class="card-img-top"
                 alt="Montre Élégante"
               />
@@ -138,18 +220,23 @@
 
         <!-- Produit 2 -->
         <div class="col-md-3 col-6">
-          <div class="card product-card">
+          <div
+            class="card product-card"
+            data-category="accessoires"
+            data-price="10000"
+            data-color="noir"
+          >
             <span
               class="wishlist-icon"
               data-id="2"
               data-name="sac à main LOUIS VUITTON"
               data-price="10000"
-              data-image="sac-lv.webp"
+              data-image="photos/sac-lv.webp"
               >♡</span
             >
             <a href="product.html"
               ><img
-                src="sac-lv.webp"
+                src="photos/sac-lv.webp"
                 class="card-img-top"
                 alt="Sac à Main"
             /></a>
@@ -174,18 +261,23 @@
 
         <!-- Produit 3 -->
         <div class="col-md-3 col-6">
-          <div class="card product-card">
+          <div
+            class="card product-card"
+            data-category="chaussures"
+            data-price="10000"
+            data-color="blanc"
+          >
             <span
               class="wishlist-icon"
               data-id="3"
               data-name="Jordan 4"
               data-price="10000"
-              data-image="jordan4.jpeg"
+              data-image="photos/jordan4.jpeg"
               >♡</span
             >
             <a href="product.html"
               ><img
-                src="jordan4.jpeg"
+                src="photos/jordan4.jpeg"
                 class="card-img-top"
                 alt="Jordan 4"
             /></a>
@@ -208,18 +300,23 @@
           </div>
         </div>
         <div class="col-md-3 col-6">
-          <div class="card product-card">
+          <div
+            class="card product-card"
+            data-category="bijoux"
+            data-price="5000"
+            data-color="rouge"
+          >
             <span
               class="wishlist-icon"
               data-id="4"
               data-name="collier-helios-dore"
               data-price="5000"
-              data-image="collier-helios-dore.avif"
+              data-image="photos/collier-helios-dore.avif"
               >♡</span
             >
             <a href="product.html"
               ><img
-                src="collier-helios-dore.avif"
+                src="photos/collier-helios-dore.avif"
                 class="card-img-top"
                 alt="collier-helios-dore"
             /></a>
@@ -361,14 +458,86 @@
       </div>
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+      // Filters for boutique page
+      (function () {
+        const category = document.getElementById("filter-category");
+        const price = document.getElementById("filter-price");
+        const color = document.getElementById("filter-color");
+        const sort = document.getElementById("filter-sort");
+        const row = document.getElementById("products-row");
+
+        function parseRange(val) {
+          if (!val) return null;
+          const [a, b] = val.split("-").map(Number);
+          return { min: a, max: b };
+        }
+
+        function applyFilters() {
+          const cat = category ? category.value : "";
+          const pr = price ? parseRange(price.value) : null;
+          const col = color ? color.value : "";
+          const sortVal = sort ? sort.value : "";
+
+          const items = Array.from(row.querySelectorAll(".col-md-3"));
+          // show/hide
+          items.forEach((colEl) => {
+            const card = colEl.querySelector(".product-card");
+            if (!card) return;
+            const c = card.dataset.category || "";
+            const p = Number(card.dataset.price || 0);
+            const co = (card.dataset.color || "").toLowerCase();
+            let visible = true;
+            if (cat && c !== cat) visible = false;
+            if (pr) {
+              if (!(p >= pr.min && p <= pr.max)) visible = false;
+            }
+            if (col && co !== col) visible = false;
+            colEl.style.display = visible ? "" : "none";
+          });
+
+          // sorting: collect visible items
+          if (sortVal && sortVal.startsWith("prix")) {
+            const visible = items.filter((i) => i.style.display !== "none");
+            visible.sort((a, b) => {
+              const pa = Number(
+                (a.querySelector(".product-card") || {}).dataset.price || 0
+              );
+              const pb = Number(
+                (b.querySelector(".product-card") || {}).dataset.price || 0
+              );
+              return sortVal === "prix-asc" ? pa - pb : pb - pa;
+            });
+            // reappend in order
+            visible.forEach((node) => row.appendChild(node));
+          }
+        }
+
+        [category, price, color, sort].forEach((el) => {
+          if (el) el.addEventListener("change", applyFilters);
+        });
+      })();
+    </script>
+    <script>
+      document.addEventListener("contextmenu", (event) =>
+        event.preventDefault()
+      );
+    </script>
+
+    <!-- Empêcher Ctrl+U et F12 -->
+    <script>
+      document.onkeydown = function (e) {
+        if (e.ctrlKey && (e.key === "u" || e.key === "U" || e.key === "s"))
+          return false;
+        if (e.key === "F12") return false;
+      };
+    </script>
     <!-- Dans TOUTES les pages -->
     <script src="js/"></script>
-    <script src="header.js"></script>
-    <script src="popup.js"></script>
-    <script src="cart.js" defer></script>
-    <script src="wishlist.js"></script>
-    <script src="dark-mode.js"></script>
+    <script src="js/header.js"></script>
+    <script src="js/popup.js"></script>
+    <script src="js/cart.js" defer></script>
+    <script src="js/wishlist.js"></script>
+    <script src="js/dark-mode.js"></script>
   </body>
 </html>
-
-

@@ -4,11 +4,20 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="darkmode.css" />
-    <link rel="stylesheet" href="head.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css"
+    />
+    <!-- Swiper CSS pour le carousel responsive -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
+    <link rel="stylesheet" href="css/header.css" />
+    <link rel="stylesheet" href="css/head.css" />
     <title>Checkout - Truxtify</title>
     <style>
       body {
@@ -159,42 +168,119 @@
   </head>
   <body>
     <header class="sticky-top">
-      <div class="logo">
-        <a href="header.html">
-          <strong
-            ><span>TRU<span class="custom-x"></span>TIFY</span></strong
+      <div class="d-flex align-items-center header-left">
+        <!-- Hamburger left (mobile) -->
+        <button
+          class="btn btn-link text-white mobile-hamburger d-md-none me-2 p-1"
+          type="button"
+          data-bs-toggle="offcanvas"
+          data-bs-target="#mobileOffcanvas"
+          aria-controls="mobileOffcanvas"
+        >
+          <i class="bi bi-list fs-3"></i>
+        </button>
+
+        <div class="logo">
+          <a href="header.html"
+            ><strong
+              ><span>TRU<span class="custom-x"></span>TIFY</span></strong
+            ></a
           >
-        </a>
+        </div>
       </div>
-      <!--<form class="search-bar d-flex me-3">
+
+      <form class="search-bar d-flex me-3">
         <input
-          class="form-control"
+          class="form-control d-none d-md-block"
           type="search"
           placeholder="search for products"
         />
-      </form>-->
-      <div class="navbar navbar-expand-lg">
-        <ul class="navbar me-auto mb-2 mb-lg-0">
+      </form>
+      <div class="navbar navbar-expand-ig">
+        <ul class="navbar me-auto mb-2 mb-ig-0">
           <li class="nav-item">
             <a class="nav-link" href="index.html">HOME</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="boutique.html">SHOP</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href=".html">CONTACT</a>
-          </li>
-          <!-- Ici, on insère dynamiquement le bouton Connexion ou le menu
-          utilisateur -->
-          <div id="user-menu"></div>
-
-          <!-- Panier -->
-          <a href="cart.html" class="btn btn-warning ms-2 active">
-            🛒 Panier(<span id="cart-count">0</span>)
-          </a>
+          <li class="nav-item"><a class="nav-link" href=".html">CONTACT</a></li>
         </ul>
       </div>
+
+      <!--<div class="d-flex align-items-center gap-2 ms-2">
+        <button
+          class="btn btn-link text-white d-md-none mobile-search-toggle p-1 me-1"
+          type="button"
+          aria-label="Rechercher"
+        >
+          <i class="bi bi-search fs-4"></i>
+        </button>-->
+      <!-- Cart icon (icon-only) 
+        <a href="cart.html" class="cart-icon text-white position-relative me-1">
+          <i class="bi bi-cart-fill fs-4"></i>
+          <span
+            id="cart-count"
+            class="cart-badge position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
+            >0</span
+          >
+        </a>
+
+        <div id="user-menu" class="profil d-flex d-md-block"></div>
+      </div>-->
     </header>
+
+    <!-- Mobile search panel (toggle) -->
+    <div id="mobile-search-panel" class="mobile-search-panel d-none d-md-none">
+      <div class="container py-2">
+        <div class="d-flex gap-2">
+          <input
+            id="mobile-search-input"
+            class="form-control"
+            type="search"
+            placeholder="Rechercher des produits..."
+          />
+          <button id="mobile-search-btn" class="btn btn-primary">search</button>
+          <button id="mobile-search-close" class="btn btn-light">✕</button>
+        </div>
+        <div id="mobile-search-results" class="mt-2 list-group"></div>
+      </div>
+    </div>
+
+    <!-- Offcanvas mobile menu -->
+    <div
+      class="offcanvas offcanvas-start"
+      tabindex="-1"
+      id="mobileOffcanvas"
+      aria-labelledby="mobileOffcanvasLabel"
+    >
+      <div class="offcanvas-header">
+        <button
+          type="button"
+          class="btn-close text-reset"
+          data-bs-dismiss="offcanvas"
+          aria-label="Close"
+        ></button>
+      </div>
+      <h5 class="offcanvas-title" style="font-weight: bold; display: flex">
+        Menu
+      </h5>
+      <div class="offcanvas-body">
+        <nav>
+          <ul class="list-unstyled">
+            <li class="mb-2">
+              <a class="text-decoration-none" href="index.html">HOME</a>
+            </li>
+            <li class="mb-2">
+              <a class="text-decoration-none" href="boutique.html">SHOP</a>
+            </li>
+            <li class="mb-2">
+              <a class="text-decoration-none" href=".html">CONTACT</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </div>
 
     <div class="checkout-container">
       <!-- LEFT: Form -->
@@ -220,25 +306,25 @@
         <h2>Methode de Paiement</h2>
         <div class="payment-methods">
           <img
-            src="momo.png"
+            src="icon/momo.png"
             alt="MTN"
             id="mtn"
             onclick="selectPayment('MTN', this)"
           />
           <img
-            src="om.png"
+            src="icon/om.png"
             alt="Orange Money"
             id="om"
             onclick="selectPayment('OM', this)"
           />
           <img
-            src="visa.png"
+            src="icon/visa.png"
             alt="Credit Card"
             id="card"
             onclick="selectPayment('Card', this)"
           />
           <img
-            src="paypal.png"
+            src="icon/paypal.png"
             alt="PayPal"
             id="paypal"
             onclick="selectPayment('PayPal', this)"
@@ -290,10 +376,9 @@
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
-    <script src="checkout.js"></script>
-    <script src="cart.js"></script>
-    <script src="header.js"></script>
+    <script src="js/checkout.js"></script>
+    <script src="js/cart.js"></script>
+    <script src="js/header.js"></script>
     <script src="js/dark-mode.js"></script>
   </body>
 </html>
-
