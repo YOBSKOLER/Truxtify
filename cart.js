@@ -13,7 +13,10 @@ function formatPrice(value) {
 // compteur = nombre de produits distincts
 function updateCartCount() {
   const cart = getCart();
-  document.getElementById("cart-count").textContent = cart.length;
+  const desktop = document.getElementById("cart-count");
+  const mobile = document.getElementById("cart-count-mobile");
+  if (desktop) desktop.textContent = cart.length;
+  if (mobile) mobile.textContent = cart.length;
 }
 
 // ajout au panier
@@ -60,7 +63,7 @@ function renderCart() {
     cartItems.innerHTML += `
       <div class="cart-item d-flex align-items-center justify-content-between border-bottom pb-3 mb-3">
         <div class="d-flex align-items-center">
-          <img src="${item.image}" alt="${item.name}" class="cart-img" />
+          <img src="photos/${item.image}" alt="${item.name}" class="cart-img" />
           <div class="ms-3">
             <h5>${item.name}</h5>
             <input type="number" value="${item.quantity}" min="1"
@@ -107,4 +110,3 @@ document.addEventListener("DOMContentLoaded", () => {
   initAddToCart();
   renderCart();
 });
-

@@ -1,4 +1,18 @@
-/* Responsive pour le carousel de catégories : 2 cards par slide sur mobile */
+.hero-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* desktop */
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .hero-img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+}
+
 /* --- Responsive design --- */
 @media (max-width: 992px) {
   .hero {
